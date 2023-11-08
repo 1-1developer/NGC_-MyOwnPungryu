@@ -13,16 +13,17 @@ public class MultipleTouch : MonoBehaviour
         int i = 0;
         while(i < Input.touchCount) {
             Touch t = Input.GetTouch(i);
-            if(t.phase == TouchPhase.Began)
+            if (t.phase == TouchPhase.Began)
             {
                 Debug.Log("touch began");
                 touches.Add(new TouchLocation(t.fingerId, CreateCircle(t)));
             }
-            else if(t.phase == TouchPhase.Moved)
+            else if (t.phase == TouchPhase.Moved)
             {
-                Debug.Log("touch is moving");
+                //Debug.Log("touch is moving");
                 TouchLocation thisTouch = touches.Find(TouchLocation => TouchLocation.touchId == t.fingerId);
                 thisTouch.circle.transform.position = getTouchPosition(t.position);
+                DragDropButtons.Instance.currentPosition.position = new Vector2(t.position.x, t.position.y);
             }
             else if (t.phase == TouchPhase.Ended)
             {
@@ -47,4 +48,6 @@ public class MultipleTouch : MonoBehaviour
         c.transform.position = t.position;
         return c;
     }
+
+
 }

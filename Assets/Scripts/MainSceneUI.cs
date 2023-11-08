@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using DG.Tweening;
 
 public class MainSceneUI : MonoBehaviour
 {
@@ -10,9 +11,12 @@ public class MainSceneUI : MonoBehaviour
     [SerializeField]
     private RectTransform shelfRIghtTransform;
 
+    private RectTransform initial_shelfLeftTransform;
+    private RectTransform initial_shelfrightTransform;
     void Start()
     {
-        
+        initial_shelfLeftTransform = shelfLeftTransform;
+        initial_shelfrightTransform = shelfRIghtTransform;
     }
     void Update()
     {
@@ -27,19 +31,14 @@ public class MainSceneUI : MonoBehaviour
         Debug.Log("AudioSource " + n + " selected");
         OnInstrumentSelection();
     }
-
-    float shelfMoveRange = 150.0f;
-    float shelfMoveSpeed = 5.0f;
     public void OnInstrumentSelection()
     {
-        float shelfMovement =+ Time.deltaTime * shelfMoveSpeed;
-                 
-        shelfLeftTransform.anchoredPosition = new Vector2(shelfMoveRange, 0);
-        shelfRIghtTransform.anchoredPosition = new Vector2(-shelfMoveRange, 0);
+        shelfLeftTransform.DOAnchorPosX(-810.0f, 1.0f);
+        shelfRIghtTransform.DOAnchorPosX(810.0f, 1.0f);
     }
     public void OffInstrumentSelection()
-    {        
-        shelfLeftTransform.anchoredPosition = new Vector2(-shelfMoveRange, 0);
-        shelfRIghtTransform.anchoredPosition = new Vector2(shelfMoveRange, 0);
+    {
+        shelfLeftTransform.DOAnchorPosX(initial_shelfLeftTransform.anchoredPosition.x, 1.0f);
+        shelfRIghtTransform.DOAnchorPosX(initial_shelfrightTransform.anchoredPosition.x, 1.0f);
     }
 }
