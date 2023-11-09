@@ -10,13 +10,18 @@ public class MainSceneUI : MonoBehaviour
     private RectTransform shelfLeftTransform;
     [SerializeField]
     private RectTransform shelfRIghtTransform;
+    [SerializeField]
+    private GameObject AudioButtons;
+    [SerializeField]
+    private GameObject playMusicArea;
 
-    private RectTransform initial_shelfLeftTransform;
-    private RectTransform initial_shelfrightTransform;
+    private Vector2 initial_shelfLeftTransform;
+    private Vector2 initial_shelfrightTransform;
     void Start()
     {
-        initial_shelfLeftTransform = shelfLeftTransform;
-        initial_shelfrightTransform = shelfRIghtTransform;
+        initial_shelfLeftTransform = shelfLeftTransform.anchoredPosition;
+        initial_shelfrightTransform = shelfRIghtTransform.anchoredPosition;
+        playMusicArea.SetActive(false);
     }
     void Update()
     {
@@ -29,16 +34,25 @@ public class MainSceneUI : MonoBehaviour
     public void OnClickAudioSelectButton(int n)
     {
         Debug.Log("AudioSource " + n + " selected");
+        AudioButtons.SetActive(false);
+        playMusicArea.SetActive(true);
         OnInstrumentSelection();
+    }
+    public void OnClickCloseButton()
+    {
+        OffInstrumentSelection();
+        AudioButtons.SetActive(true);
+        playMusicArea.SetActive(false);
     }
     public void OnInstrumentSelection()
     {
-        shelfLeftTransform.DOAnchorPosX(-810.0f, 1.0f);
-        shelfRIghtTransform.DOAnchorPosX(810.0f, 1.0f);
+        float moveRange = 200.0f;
+        shelfLeftTransform.DOAnchorPosX(initial_shelfLeftTransform.x + moveRange, 1.0f);
+        shelfRIghtTransform.DOAnchorPosX(initial_shelfrightTransform.x - moveRange, 1.0f);
     }
     public void OffInstrumentSelection()
     {
-        shelfLeftTransform.DOAnchorPosX(initial_shelfLeftTransform.anchoredPosition.x, 1.0f);
-        shelfRIghtTransform.DOAnchorPosX(initial_shelfrightTransform.anchoredPosition.x, 1.0f);
+        shelfLeftTransform.DOAnchorPosX(initial_shelfLeftTransform.x, 1.0f);
+        shelfRIghtTransform.DOAnchorPosX(initial_shelfrightTransform.x, 1.0f);
     }
 }
