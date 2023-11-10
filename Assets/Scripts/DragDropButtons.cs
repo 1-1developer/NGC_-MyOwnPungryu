@@ -5,35 +5,48 @@ using UnityEngine.EventSystems;
 
 public class DragDropButtons : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
-    public RectTransform currentPosition;
-    public bool isTouched = false;
+    public List<AudioClip> audioClips;
+
+    private AudioSource audioSource;
+    private int audioIndex;
+    bool isPlayingMusic;
+  
+    //////////////////////// 터치 드래그 ////////////////////////////
     public void OnBeginDrag(PointerEventData data)
     {
         transform.position = data.position;
     }
-
     public void OnDrag(PointerEventData data)
     {
         transform.position = data.position;
     }
-
     public void OnEndDrag(PointerEventData data)
     {
         transform.position = data.position;
     }
+    //////////////////////// 터치 드래그 ////////////////////////////
 
-    // Start is called before the first frame update
     void Start()
     {
-        currentPosition = GetComponent<RectTransform>();
+        audioSource = GetComponent<AudioSource>();
+        isPlayingMusic = false;
     }
 
-    // Update is called once per frame
     void Update()
     {
         
     }
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        Debug.Log("audioIndex " + audioIndex);
+        if(other.gameObject.CompareTag("Play Music Area")){
+            isPlayingMusic = true;
+            audioSource.PlayOneShot(audioClips[audioIndex]);            
+        }
+    }
 
+
+    // 싱글톤
     private static DragDropButtons _Instance;
     public static DragDropButtons Instance
     {
@@ -47,8 +60,4 @@ public class DragDropButtons : MonoBehaviour, IBeginDragHandler, IDragHandler, I
         }
     }
 
-    public void OnInstrumentButtonTouched()
-    {
-        isTouched = true;
-    }
 }

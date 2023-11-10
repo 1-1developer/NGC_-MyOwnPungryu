@@ -34,6 +34,7 @@ public class MainSceneUI : MonoBehaviour
     public void OnClickAudioSelectButton(int n)
     {
         Debug.Log("AudioSource " + n + " selected");
+        //DragDropButtons.Instance.audioIndex = n;
         AudioButtons.SetActive(false);
         playMusicArea.SetActive(true);
         OnInstrumentSelection();

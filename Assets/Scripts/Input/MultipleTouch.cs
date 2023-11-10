@@ -13,11 +13,6 @@ public class MultipleTouch : MonoBehaviour
     //GraphicRaycaster graphicRaycaster;
     //PointerEventData pointerEventData;
 
-    private void Awake()
-    {
-        //graphicRaycaster = GetComponent<GraphicRaycaster>();
-    }
-    // Update is called once per frame
     void Update()
     {
         int i = 0;
