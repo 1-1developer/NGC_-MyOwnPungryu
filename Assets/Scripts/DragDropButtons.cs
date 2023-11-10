@@ -37,11 +37,20 @@ public class DragDropButtons : MonoBehaviour, IBeginDragHandler, IDragHandler, I
         
     }
     void OnTriggerEnter2D(Collider2D other)
-    {
-        Debug.Log("audioIndex " + audioIndex);
+    {        
         if(other.gameObject.CompareTag("Play Music Area")){
-            isPlayingMusic = true;
-            audioSource.PlayOneShot(audioClips[audioIndex]);            
+            int playAudioIndex = MainSceneUI.Instance.audioIndex;
+            Debug.Log("playAudioIndex " + playAudioIndex);
+            isPlayingMusic = true;            
+            audioSource.mute = false;
+            ////////////////need debug////////////////////
+            audioSource.PlayOneShot(audioClips[playAudioIndex]);
+        }
+        if (other.gameObject.CompareTag("Off Music Area"))
+        {
+            Debug.Log("Mute");
+            isPlayingMusic = false;
+            audioSource.mute = true;
         }
     }
 

@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Draggable Button
   - Play Music Area
+  - Off Music Area
   layers:
   - Default
   - TransparentFX
