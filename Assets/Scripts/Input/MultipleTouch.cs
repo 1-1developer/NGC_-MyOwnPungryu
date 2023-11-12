@@ -9,10 +9,6 @@ public class MultipleTouch : MonoBehaviour
     public GameObject circle;
     public List<TouchLocation> touches = new List<TouchLocation>();
 
-    //Canvas canvas;
-    //GraphicRaycaster graphicRaycaster;
-    //PointerEventData pointerEventData;
-
     void Update()
     {
         int i = 0;

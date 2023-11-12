@@ -5,9 +5,7 @@ using UnityEngine.EventSystems;
 
 public class DragDropButtons : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
-    public List<AudioClip> audioClips;
-
-    private AudioSource audioSource;
+    //private AudioSource audioSource;
     private int audioIndex;
     bool isPlayingMusic;
   
@@ -15,6 +13,7 @@ public class DragDropButtons : MonoBehaviour, IBeginDragHandler, IDragHandler, I
     public void OnBeginDrag(PointerEventData data)
     {
         transform.position = data.position;
+        Debug.Log("Begin Drag");
     }
     public void OnDrag(PointerEventData data)
     {
@@ -23,13 +22,15 @@ public class DragDropButtons : MonoBehaviour, IBeginDragHandler, IDragHandler, I
     public void OnEndDrag(PointerEventData data)
     {
         transform.position = data.position;
+        Debug.Log("End Drag");
     }
     //////////////////////// ÅÍÄ¡ µå·¡±× ////////////////////////////
 
     void Start()
     {
-        audioSource = GetComponent<AudioSource>();
+        //audioSource = GetComponent<AudioSource>();
         isPlayingMusic = false;
+        
     }
 
     void Update()
@@ -42,20 +43,19 @@ public class DragDropButtons : MonoBehaviour, IBeginDragHandler, IDragHandler, I
             int playAudioIndex = MainSceneUI.Instance.audioIndex;
             Debug.Log("playAudioIndex " + playAudioIndex);
             isPlayingMusic = true;            
-            audioSource.mute = false;
+            //audioSource.mute = false;
             ////////////////need debug////////////////////
-            audioSource.PlayOneShot(audioClips[playAudioIndex]);
+            //audioSource.PlayOneShot(audioClips[playAudioIndex]);
         }
         if (other.gameObject.CompareTag("Off Music Area"))
         {
-            Debug.Log("Mute");
             isPlayingMusic = false;
-            audioSource.mute = true;
+            //audioSource.mute = true;
         }
     }
 
 
-    // ½Ì±ÛÅæ
+    // Singleton
     private static DragDropButtons _Instance;
     public static DragDropButtons Instance
     {

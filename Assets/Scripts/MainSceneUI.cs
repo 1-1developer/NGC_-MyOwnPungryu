@@ -26,6 +26,11 @@ public class MainSceneUI : MonoBehaviour
 
     void Start()
     {
+        // 언어 선택 데이터 받아오기
+        int languageSprite = Title.selectLanguage;
+        Debug.Log("Language Mode: "+languageSprite);
+
+        // UI Initial Position Setting
         initial_shelfLeftTransform = shelfLeftTransform.anchoredPosition;
         initial_shelfrightTransform = shelfRIghtTransform.anchoredPosition;
 
@@ -65,13 +70,14 @@ public class MainSceneUI : MonoBehaviour
         OnInstrumentSelection();
     }
 
-    // 악기 선택 UI
+    // 선반 Close Button
     public void OnClickCloseButton()
     {
         OffInstrumentSelection();
         AudioButtons.SetActive(true);
         playMusicArea.SetActive(false);
     }
+    // 악기 선택 UI
     public void OnInstrumentSelection()
     {
         float moveRange = 200.0f;
@@ -108,7 +114,7 @@ public class MainSceneUI : MonoBehaviour
         }
     }
 
-    // 싱글톤
+    // Singleton
     private static MainSceneUI _Instance;
     public static MainSceneUI Instance
     {
