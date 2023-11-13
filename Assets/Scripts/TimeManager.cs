@@ -31,17 +31,4 @@ public class TimeManager : MonoBehaviour
         }
     }
 
-    // Singleton
-    //private static TimeManager _Instance;
-    //public static TimeManager Instance
-    //{
-    //    get
-    //    {
-    //        if (_Instance == null)
-    //        {
-    //            _Instance = FindAnyObjectByType<TimeManager>();
-    //        }
-    //        return _Instance;
-    //    }
-    //}
 }

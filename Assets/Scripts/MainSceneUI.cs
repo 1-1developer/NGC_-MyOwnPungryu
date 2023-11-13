@@ -23,6 +23,8 @@ public class MainSceneUI : MonoBehaviour
     private Vector2 initial_shelfLeftTransform;
     private Vector2 initial_shelfrightTransform;
 
+    public int audioIndex;
+
 
     void Start()
     {
@@ -59,23 +61,24 @@ public class MainSceneUI : MonoBehaviour
         SceneManager.LoadScene("Title");
     }
 
-    public int audioIndex;
-    // 노래 선택 버튼
+    
+    // 노래 선택 & 선반 활성화
     public void OnClickAudioSelectButton(int n)
     {
         audioIndex = n;
-        Debug.Log("AudioSource " + n + " selected");        
+        AudioManager.Instance.SetAudioClips(audioIndex);
+                
         AudioButtons.SetActive(false);
         playMusicArea.SetActive(true);
         OnInstrumentSelection();
     }
 
-    // 선반 Close Button
+    // 선반 비활성화
     public void OnClickCloseButton()
-    {
-        OffInstrumentSelection();
+    {       
         AudioButtons.SetActive(true);
         playMusicArea.SetActive(false);
+        OffInstrumentSelection();
     }
     // 악기 선택 UI
     public void OnInstrumentSelection()

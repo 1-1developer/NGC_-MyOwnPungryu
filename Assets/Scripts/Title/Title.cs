@@ -27,17 +27,5 @@ public class Title : MonoBehaviour
     {
         
     }
-    private static Title _Instance;
-    public static Title Instance
-    {
-        get
-        {
-            if (_Instance == null)
-            {
-                _Instance = FindAnyObjectByType<Title>();
-            }
-            return _Instance;
-        }
-    }
 
 }

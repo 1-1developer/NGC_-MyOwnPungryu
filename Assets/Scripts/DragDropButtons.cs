@@ -5,9 +5,11 @@ using UnityEngine.EventSystems;
 
 public class DragDropButtons : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
-    //private AudioSource audioSource;
+
+    public AudioClip[] audioClips;
+    private AudioSource audioSource;
     private int audioIndex;
-    bool isPlayingMusic;
+    bool isDropped;
   
     //////////////////////// 터치 드래그 ////////////////////////////
     public void OnBeginDrag(PointerEventData data)
@@ -28,8 +30,7 @@ public class DragDropButtons : MonoBehaviour, IBeginDragHandler, IDragHandler, I
 
     void Start()
     {
-        //audioSource = GetComponent<AudioSource>();
-        isPlayingMusic = false;
+        audioSource = GetComponent<AudioSource>();
         
     }
 
@@ -40,20 +41,26 @@ public class DragDropButtons : MonoBehaviour, IBeginDragHandler, IDragHandler, I
     void OnTriggerEnter2D(Collider2D other)
     {        
         if(other.gameObject.CompareTag("Play Music Area")){
-            int playAudioIndex = MainSceneUI.Instance.audioIndex;
-            Debug.Log("playAudioIndex " + playAudioIndex);
-            isPlayingMusic = true;            
-            //audioSource.mute = false;
-            ////////////////need debug////////////////////
-            //audioSource.PlayOneShot(audioClips[playAudioIndex]);
-        }
+
+            if (audioSource.isPlaying)
+            {
+                audioSource.mute = false;
+            }
+            else
+            {
+                Debug.Log("On Music");
+                audioSource.Play();
+            }
+        }                                            
         if (other.gameObject.CompareTag("Off Music Area"))
         {
-            isPlayingMusic = false;
-            //audioSource.mute = true;
+            Debug.Log("Mute Music");
+            if (audioSource.isPlaying)
+            {
+                audioSource.mute = true;
+            }
         }
     }
-
 
     // Singleton
     private static DragDropButtons _Instance;
