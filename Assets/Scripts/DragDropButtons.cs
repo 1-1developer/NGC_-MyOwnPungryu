@@ -36,7 +36,11 @@ public class DragDropButtons : MonoBehaviour, IBeginDragHandler, IDragHandler, I
 
     void Update()
     {
-        
+        if(!audioSource.isPlaying && AudioManager.isMusicStarted ==true)
+        {
+            audioSource.Play();
+            audioSource.mute = true;
+        }
     }
     void OnTriggerEnter2D(Collider2D other)
     {        
@@ -50,8 +54,10 @@ public class DragDropButtons : MonoBehaviour, IBeginDragHandler, IDragHandler, I
             {
                 Debug.Log("On Music");
                 audioSource.Play();
+                AudioManager.isMusicStarted = true;
             }
-        }                                            
+        }    
+        
         if (other.gameObject.CompareTag("Off Music Area"))
         {
             Debug.Log("Mute Music");
