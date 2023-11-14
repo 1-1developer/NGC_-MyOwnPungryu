@@ -19,6 +19,9 @@ public class MainSceneUI : MonoBehaviour
     [SerializeField]
     private List <GameObject> InstrumentButtonPrefab;
 
+    private List<RectTransform> audioButtonPosition;
+    private RectTransform InstrumentButtonPosition;
+
 
     private Vector2 initial_shelfLeftTransform;
     private Vector2 initial_shelfrightTransform;
@@ -32,19 +35,31 @@ public class MainSceneUI : MonoBehaviour
         int languageSprite = Title.selectLanguage;
         Debug.Log("Language Mode: "+languageSprite);
 
-        // UI Initial Position Setting
+        // Shelf Initial Position Setting
         initial_shelfLeftTransform = shelfLeftTransform.anchoredPosition;
         initial_shelfrightTransform = shelfRIghtTransform.anchoredPosition;
 
+        // Audio Button Position Setting
+        //for(int i = 0; i < 3; i++)
+        //{
+        //    audioButtonPosition.Add(AudioButtons.transform.GetChild(i).GetComponent<RectTransform>());
+        //}
+
+        //audioButtonPosition[0].DOAnchorPos(new Vector2(-350.0f, -350.0f), 1.0f);
+        //audioButtonPosition[1].DOAnchorPos(new Vector2(0, -350.0f), 1.0f);
+        //audioButtonPosition[2].DOAnchorPos(new Vector2(350.0f, -350.0f), 1.0f);
+
+        // Instrument Button Position Setting
+        float instrumentButtonDistance = 300.0f;
         for (int i = 0; i < InstrumentButtonPrefab.Capacity; i++) {
-            RectTransform InstrumentButtonPosition = InstrumentButtonPrefab[i].GetComponent<RectTransform>();
+            InstrumentButtonPosition = InstrumentButtonPrefab[i].GetComponent<RectTransform>();
             if(i < 3)
             {
-                InstrumentButtonPosition.anchoredPosition = new Vector2(initial_shelfLeftTransform.x, -350.0f - i * 300.0f) ;
+                InstrumentButtonPosition.anchoredPosition = new Vector2(initial_shelfLeftTransform.x, -350.0f - i * instrumentButtonDistance) ;
             }
             else
             {
-                InstrumentButtonPosition.anchoredPosition = new Vector2(initial_shelfrightTransform.x, -350.0f - (i-3) * 300.0f);
+                InstrumentButtonPosition.anchoredPosition = new Vector2(initial_shelfrightTransform.x, -350.0f - (i-3) * instrumentButtonDistance);
             }
         }
 
@@ -89,7 +104,7 @@ public class MainSceneUI : MonoBehaviour
         shelfRIghtTransform.DOAnchorPosX(initial_shelfrightTransform.x - moveRange, 1.0f);
         for (int i = 0; i < InstrumentButtonPrefab.Capacity; i++)
         {
-            RectTransform InstrumentButtonPosition = InstrumentButtonPrefab[i].GetComponent<RectTransform>();
+            InstrumentButtonPosition = InstrumentButtonPrefab[i].GetComponent<RectTransform>();
             if (i < 3)
             {
                 InstrumentButtonPosition.DOAnchorPosX(initial_shelfLeftTransform.x + moveRange, 1.0f);
@@ -106,7 +121,7 @@ public class MainSceneUI : MonoBehaviour
         shelfRIghtTransform.DOAnchorPosX(initial_shelfrightTransform.x, 1.0f);
         for (int i = 0; i < InstrumentButtonPrefab.Capacity; i++)
         {
-            RectTransform InstrumentButtonPosition = InstrumentButtonPrefab[i].GetComponent<RectTransform>();
+            InstrumentButtonPosition = InstrumentButtonPrefab[i].GetComponent<RectTransform>();
             if (i < 3)
             {
                 InstrumentButtonPosition.DOAnchorPos(new Vector2(initial_shelfLeftTransform.x, -350.0f - i * 300.0f), 1.0f);
