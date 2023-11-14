@@ -1736,20 +1736,8 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 5549014422263875821, guid: c5ef630e78a658943880f2bad2a078fc, type: 3}
-      propertyPath: m_BodyType
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5549014422263875821, guid: c5ef630e78a658943880f2bad2a078fc, type: 3}
-      propertyPath: m_Simulated
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5549014422263875821, guid: c5ef630e78a658943880f2bad2a078fc, type: 3}
-      propertyPath: m_Constraints
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 5549014422263875821, guid: c5ef630e78a658943880f2bad2a078fc, type: 3}
-      propertyPath: m_UseFullKinematicContacts
-      value: 1
+      propertyPath: m_LinearDrag
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 7810431739445066132, guid: c5ef630e78a658943880f2bad2a078fc, type: 3}
       propertyPath: Loop
@@ -1900,6 +1888,10 @@ PrefabInstance:
       propertyPath: 'audioClips.Array.data[2]'
       value: 
       objectReference: {fileID: 8300000, guid: 239aae8f89e8fd94c8fc8fcf741e6ad6, type: 3}
+    - target: {fileID: 5549014422263875821, guid: c5ef630e78a658943880f2bad2a078fc, type: 3}
+      propertyPath: m_Constraints
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 7810431739445066132, guid: c5ef630e78a658943880f2bad2a078fc, type: 3}
       propertyPath: Loop
       value: 1
@@ -2946,7 +2938,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f231c4fb786f3946a6b90b886c48677, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_SendPointerHoverToParent: 1
+  m_SendPointerHoverToParent: 0
   m_HorizontalAxis: Horizontal
   m_VerticalAxis: Vertical
   m_SubmitButton: Submit
@@ -3307,14 +3299,6 @@ PrefabInstance:
       propertyPath: 'audioClips.Array.data[2]'
       value: 
       objectReference: {fileID: 8300000, guid: d682d565942b6944ab8be89a5e9d0272, type: 3}
-    - target: {fileID: 5549014422263875821, guid: c5ef630e78a658943880f2bad2a078fc, type: 3}
-      propertyPath: m_BodyType
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5549014422263875821, guid: c5ef630e78a658943880f2bad2a078fc, type: 3}
-      propertyPath: m_UseFullKinematicContacts
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7810431739445066132, guid: c5ef630e78a658943880f2bad2a078fc, type: 3}
       propertyPath: Loop
       value: 1

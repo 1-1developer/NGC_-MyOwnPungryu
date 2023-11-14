@@ -8,29 +8,29 @@ public class DragDropButtons : MonoBehaviour, IBeginDragHandler, IDragHandler, I
 
     public AudioClip[] audioClips;
     private AudioSource audioSource;
-    bool isDropped;
-  
+    private Rigidbody2D myRigidbody;
+
+
     //////////////////////// 터치 드래그 ////////////////////////////
     public void OnBeginDrag(PointerEventData data)
-    {
-        transform.position = data.position;
-        //Debug.Log("Begin Drag");
+    {       
+        //transform.position = data.position;
+        myRigidbody.MovePosition(data.position);
     }
     public void OnDrag(PointerEventData data)
     {
-        transform.position = data.position;
+        myRigidbody.MovePosition(data.position);
     }
     public void OnEndDrag(PointerEventData data)
     {
-        transform.position = data.position;
-        //Debug.Log("End Drag");
+        myRigidbody.MovePosition(data.position);
     }
     //////////////////////// 터치 드래그 ////////////////////////////
 
     void Start()
     {
-        audioSource = GetComponent<AudioSource>();
-        
+        myRigidbody = GetComponent<Rigidbody2D>();
+        audioSource = GetComponent<AudioSource>();        
     }
 
     void Update()
@@ -66,24 +66,5 @@ public class DragDropButtons : MonoBehaviour, IBeginDragHandler, IDragHandler, I
             }
         }
     }
-
-    public void StopMusic()
-    {
-        audioSource.Stop();
-    }
-
-    // Singleton
-    //private static DragDropButtons _Instance;
-    //public static DragDropButtons Instance
-    //{
-    //    get
-    //    {
-    //        if (_Instance == null)
-    //        {
-    //            _Instance = FindAnyObjectByType<DragDropButtons>();
-    //        }
-    //        return _Instance;
-    //    }
-    //}
 
 }
