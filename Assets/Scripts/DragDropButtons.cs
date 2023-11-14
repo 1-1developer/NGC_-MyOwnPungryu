@@ -8,7 +8,6 @@ public class DragDropButtons : MonoBehaviour, IBeginDragHandler, IDragHandler, I
 
     public AudioClip[] audioClips;
     private AudioSource audioSource;
-    private int audioIndex;
     bool isDropped;
   
     //////////////////////// 터치 드래그 ////////////////////////////
@@ -60,7 +59,7 @@ public class DragDropButtons : MonoBehaviour, IBeginDragHandler, IDragHandler, I
         
         if (other.gameObject.CompareTag("Off Music Area"))
         {
-            Debug.Log("Mute Music");
+            //Debug.Log("Mute Music");
             if (audioSource.isPlaying)
             {
                 audioSource.mute = true;
@@ -70,21 +69,21 @@ public class DragDropButtons : MonoBehaviour, IBeginDragHandler, IDragHandler, I
 
     public void StopMusic()
     {
-
+        audioSource.Stop();
     }
 
     // Singleton
-    private static DragDropButtons _Instance;
-    public static DragDropButtons Instance
-    {
-        get
-        {
-            if (_Instance == null)
-            {
-                _Instance = FindAnyObjectByType<DragDropButtons>();
-            }
-            return _Instance;
-        }
-    }
+    //private static DragDropButtons _Instance;
+    //public static DragDropButtons Instance
+    //{
+    //    get
+    //    {
+    //        if (_Instance == null)
+    //        {
+    //            _Instance = FindAnyObjectByType<DragDropButtons>();
+    //        }
+    //        return _Instance;
+    //    }
+    //}
 
 }

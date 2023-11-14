@@ -13,7 +13,7 @@ public class MainSceneUI : MonoBehaviour
     [SerializeField]
     private RectTransform shelfRIghtTransform;
     [SerializeField]
-    private GameObject playMusicArea;
+    private GameObject dragInstrumentUI;
     [SerializeField]
     private GameObject AudioButtons;
     [SerializeField]
@@ -47,8 +47,8 @@ public class MainSceneUI : MonoBehaviour
                 InstrumentButtonPosition.anchoredPosition = new Vector2(initial_shelfrightTransform.x, -350.0f - (i-3) * 300.0f);
             }
         }
-       
-        playMusicArea.SetActive(false);
+
+        dragInstrumentUI.SetActive(false);
     }
     void Update()
     {
@@ -69,7 +69,7 @@ public class MainSceneUI : MonoBehaviour
         AudioManager.Instance.SetAudioClips(audioIndex);
                 
         AudioButtons.SetActive(false);
-        playMusicArea.SetActive(true);
+        dragInstrumentUI.SetActive(true);
         OnInstrumentSelection();
     }
 
@@ -77,8 +77,9 @@ public class MainSceneUI : MonoBehaviour
     public void OnClickCloseButton()
     {       
         AudioButtons.SetActive(true);
-        playMusicArea.SetActive(false);
+        dragInstrumentUI.SetActive(false);
         OffInstrumentSelection();
+        AudioManager.Instance.StopAudioSources();
     }
     // æ«±‚ º±≈√ UI
     public void OnInstrumentSelection()

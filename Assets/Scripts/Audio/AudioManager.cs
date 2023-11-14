@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -26,6 +27,14 @@ public class AudioManager : MonoBehaviour
         {
             instrumentAudio[i].clip = instrumentButtons[i].GetComponent<DragDropButtons>().audioClips[index];
             Debug.Log("instrument button: " + i + " audio clip: " + index);
+        }
+    }
+
+    public void StopAudioSources()
+    {
+        for (int i = 0; i < instrumentAudio.Length; i++)
+        {
+            instrumentAudio[i].Stop();
         }
     }
 
