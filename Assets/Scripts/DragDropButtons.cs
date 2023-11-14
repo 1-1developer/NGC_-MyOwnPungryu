@@ -15,7 +15,7 @@ public class DragDropButtons : MonoBehaviour, IBeginDragHandler, IDragHandler, I
     public void OnBeginDrag(PointerEventData data)
     {
         transform.position = data.position;
-        Debug.Log("Begin Drag");
+        //Debug.Log("Begin Drag");
     }
     public void OnDrag(PointerEventData data)
     {
@@ -24,7 +24,7 @@ public class DragDropButtons : MonoBehaviour, IBeginDragHandler, IDragHandler, I
     public void OnEndDrag(PointerEventData data)
     {
         transform.position = data.position;
-        Debug.Log("End Drag");
+        //Debug.Log("End Drag");
     }
     //////////////////////// 터치 드래그 ////////////////////////////
 
@@ -66,6 +66,11 @@ public class DragDropButtons : MonoBehaviour, IBeginDragHandler, IDragHandler, I
                 audioSource.mute = true;
             }
         }
+    }
+
+    public void StopMusic()
+    {
+
     }
 
     // Singleton

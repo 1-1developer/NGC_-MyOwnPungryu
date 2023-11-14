@@ -333,7 +333,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -301.2, y: 0}
+  m_AnchoredPosition: {x: -275.8, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!212 &147325747
@@ -501,15 +501,15 @@ PrefabInstance:
     - target: {fileID: 5533332501760049196, guid: c5ef630e78a658943880f2bad2a078fc, type: 3}
       propertyPath: 'audioClips.Array.data[0]'
       value: 
-      objectReference: {fileID: 8300000, guid: 096b3b2f5988d47469e62c5f6a5fdcfb, type: 3}
+      objectReference: {fileID: 8300000, guid: 2c1ef5dff7a93284793e98f0152006ea, type: 3}
     - target: {fileID: 5533332501760049196, guid: c5ef630e78a658943880f2bad2a078fc, type: 3}
       propertyPath: 'audioClips.Array.data[1]'
       value: 
-      objectReference: {fileID: 8300000, guid: 727829c17405a334089c19d778a9c789, type: 3}
+      objectReference: {fileID: 8300000, guid: 252587879b0f66b44959e870f9edd21b, type: 3}
     - target: {fileID: 5533332501760049196, guid: c5ef630e78a658943880f2bad2a078fc, type: 3}
       propertyPath: 'audioClips.Array.data[2]'
       value: 
-      objectReference: {fileID: 8300000, guid: 7fc8b3626b59b51458913dd1c037804a, type: 3}
+      objectReference: {fileID: 8300000, guid: 0eef54199066dc94496cafac9c91fd33, type: 3}
     - target: {fileID: 5533332501760049196, guid: c5ef630e78a658943880f2bad2a078fc, type: 3}
       propertyPath: 'audioSources.Array.data[0]'
       value: 
@@ -670,11 +670,11 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1374911465}
-  m_Father: {fileID: 563860465}
+  m_Father: {fileID: 1104670637}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 489}
+  m_AnchoredPosition: {x: 0, y: 459.00003}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &294008264
@@ -878,15 +878,15 @@ PrefabInstance:
     - target: {fileID: 5533332501760049196, guid: c5ef630e78a658943880f2bad2a078fc, type: 3}
       propertyPath: 'audioClips.Array.data[0]'
       value: 
-      objectReference: {fileID: 8300000, guid: 096b3b2f5988d47469e62c5f6a5fdcfb, type: 3}
+      objectReference: {fileID: 8300000, guid: f622ebd5ca875ec4bbaef0bf3f594e09, type: 3}
     - target: {fileID: 5533332501760049196, guid: c5ef630e78a658943880f2bad2a078fc, type: 3}
       propertyPath: 'audioClips.Array.data[1]'
       value: 
-      objectReference: {fileID: 8300000, guid: 727829c17405a334089c19d778a9c789, type: 3}
+      objectReference: {fileID: 8300000, guid: 83f7b83017846f14f8ba0a1eb1f9b69f, type: 3}
     - target: {fileID: 5533332501760049196, guid: c5ef630e78a658943880f2bad2a078fc, type: 3}
       propertyPath: 'audioClips.Array.data[2]'
       value: 
-      objectReference: {fileID: 8300000, guid: 7fc8b3626b59b51458913dd1c037804a, type: 3}
+      objectReference: {fileID: 8300000, guid: 6a3147a1c4035904c8b17a9d2b532a5f, type: 3}
     - target: {fileID: 5533332501760049196, guid: c5ef630e78a658943880f2bad2a078fc, type: 3}
       propertyPath: 'audioSources.Array.data[0]'
       value: 
@@ -1049,7 +1049,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 299.4, y: 0}
+  m_AnchoredPosition: {x: 275.4, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!212 &407912564
@@ -1219,14 +1219,13 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 294008263}
   - {fileID: 407912563}
   m_Father: {fileID: 1104670637}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 1040, y: 0}
-  m_SizeDelta: {x: 300, y: 1080}
+  m_SizeDelta: {x: 250, y: 1080}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &563860466
 MonoBehaviour:
@@ -1310,7 +1309,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 300, y: 1080}
+  m_Size: {x: 250, y: 1080}
   m_EdgeRadius: 0
 --- !u!1 &666963869
 GameObject:
@@ -1723,15 +1722,15 @@ PrefabInstance:
     - target: {fileID: 5533332501760049196, guid: c5ef630e78a658943880f2bad2a078fc, type: 3}
       propertyPath: 'audioClips.Array.data[0]'
       value: 
-      objectReference: {fileID: 8300000, guid: 096b3b2f5988d47469e62c5f6a5fdcfb, type: 3}
+      objectReference: {fileID: 8300000, guid: 47235d80ce8a8d74b91ca1f99e634317, type: 3}
     - target: {fileID: 5533332501760049196, guid: c5ef630e78a658943880f2bad2a078fc, type: 3}
       propertyPath: 'audioClips.Array.data[1]'
       value: 
-      objectReference: {fileID: 8300000, guid: 727829c17405a334089c19d778a9c789, type: 3}
+      objectReference: {fileID: 8300000, guid: 9567c3bc87f87ac4a84c93cd429a68a2, type: 3}
     - target: {fileID: 5533332501760049196, guid: c5ef630e78a658943880f2bad2a078fc, type: 3}
       propertyPath: 'audioClips.Array.data[2]'
       value: 
-      objectReference: {fileID: 8300000, guid: 7fc8b3626b59b51458913dd1c037804a, type: 3}
+      objectReference: {fileID: 8300000, guid: 4f445176156d8a346806c5525114546f, type: 3}
     - target: {fileID: 5533332501760049196, guid: c5ef630e78a658943880f2bad2a078fc, type: 3}
       propertyPath: 'audioSources.Array.data[0]'
       value: 
@@ -1892,15 +1891,15 @@ PrefabInstance:
     - target: {fileID: 5533332501760049196, guid: c5ef630e78a658943880f2bad2a078fc, type: 3}
       propertyPath: 'audioClips.Array.data[0]'
       value: 
-      objectReference: {fileID: 8300000, guid: 096b3b2f5988d47469e62c5f6a5fdcfb, type: 3}
+      objectReference: {fileID: 8300000, guid: 6f0a75a24cdb8e44a94b540ec6885849, type: 3}
     - target: {fileID: 5533332501760049196, guid: c5ef630e78a658943880f2bad2a078fc, type: 3}
       propertyPath: 'audioClips.Array.data[1]'
       value: 
-      objectReference: {fileID: 8300000, guid: 727829c17405a334089c19d778a9c789, type: 3}
+      objectReference: {fileID: 8300000, guid: 263c98697c9eb3145aa55e67c423e0ee, type: 3}
     - target: {fileID: 5533332501760049196, guid: c5ef630e78a658943880f2bad2a078fc, type: 3}
       propertyPath: 'audioClips.Array.data[2]'
       value: 
-      objectReference: {fileID: 8300000, guid: 7fc8b3626b59b51458913dd1c037804a, type: 3}
+      objectReference: {fileID: 8300000, guid: 239aae8f89e8fd94c8fc8fcf741e6ad6, type: 3}
     - target: {fileID: 7810431739445066132, guid: c5ef630e78a658943880f2bad2a078fc, type: 3}
       propertyPath: Loop
       value: 1
@@ -2165,7 +2164,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -1040, y: 0}
-  m_SizeDelta: {x: 300, y: 1080}
+  m_SizeDelta: {x: 250, y: 1080}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &966093618
 MonoBehaviour:
@@ -2249,7 +2248,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 300, y: 1080}
+  m_Size: {x: 250, y: 1080}
   m_EdgeRadius: 0
 --- !u!1 &1104670636
 GameObject:
@@ -2281,6 +2280,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 294008263}
   - {fileID: 666963870}
   - {fileID: 538753714}
   - {fileID: 966093617}
@@ -2638,8 +2638,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.000041962, y: -104.99999}
-  m_SizeDelta: {x: 1200, y: 870}
+  m_AnchoredPosition: {x: 0, y: -104.99999}
+  m_SizeDelta: {x: 1100, y: 870}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!61 &1390485984
 BoxCollider2D:
@@ -2685,7 +2685,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1200, y: 870}
+  m_Size: {x: 1100, y: 870}
   m_EdgeRadius: 0
 --- !u!114 &1390485985
 MonoBehaviour:
@@ -3299,15 +3299,15 @@ PrefabInstance:
     - target: {fileID: 5533332501760049196, guid: c5ef630e78a658943880f2bad2a078fc, type: 3}
       propertyPath: 'audioClips.Array.data[0]'
       value: 
-      objectReference: {fileID: 8300000, guid: 096b3b2f5988d47469e62c5f6a5fdcfb, type: 3}
+      objectReference: {fileID: 8300000, guid: 4ffbd9703ec485249afed8b612f5fa52, type: 3}
     - target: {fileID: 5533332501760049196, guid: c5ef630e78a658943880f2bad2a078fc, type: 3}
       propertyPath: 'audioClips.Array.data[1]'
       value: 
-      objectReference: {fileID: 8300000, guid: 727829c17405a334089c19d778a9c789, type: 3}
+      objectReference: {fileID: 8300000, guid: 5bda6f18abb6bee4f8e702185f32a73c, type: 3}
     - target: {fileID: 5533332501760049196, guid: c5ef630e78a658943880f2bad2a078fc, type: 3}
       propertyPath: 'audioClips.Array.data[2]'
       value: 
-      objectReference: {fileID: 8300000, guid: 7fc8b3626b59b51458913dd1c037804a, type: 3}
+      objectReference: {fileID: 8300000, guid: d682d565942b6944ab8be89a5e9d0272, type: 3}
     - target: {fileID: 5549014422263875821, guid: c5ef630e78a658943880f2bad2a078fc, type: 3}
       propertyPath: m_BodyType
       value: 0
@@ -3991,15 +3991,15 @@ PrefabInstance:
     - target: {fileID: 5533332501760049196, guid: c5ef630e78a658943880f2bad2a078fc, type: 3}
       propertyPath: 'audioClips.Array.data[0]'
       value: 
-      objectReference: {fileID: 8300000, guid: 096b3b2f5988d47469e62c5f6a5fdcfb, type: 3}
+      objectReference: {fileID: 8300000, guid: db11488926936f64b83a781c9d24bc65, type: 3}
     - target: {fileID: 5533332501760049196, guid: c5ef630e78a658943880f2bad2a078fc, type: 3}
       propertyPath: 'audioClips.Array.data[1]'
       value: 
-      objectReference: {fileID: 8300000, guid: 727829c17405a334089c19d778a9c789, type: 3}
+      objectReference: {fileID: 8300000, guid: 466c13159cc4e5848a6d8cfc661ebcf4, type: 3}
     - target: {fileID: 5533332501760049196, guid: c5ef630e78a658943880f2bad2a078fc, type: 3}
       propertyPath: 'audioClips.Array.data[2]'
       value: 
-      objectReference: {fileID: 8300000, guid: 7fc8b3626b59b51458913dd1c037804a, type: 3}
+      objectReference: {fileID: 8300000, guid: 7d63a34bca2e1ff47a5b4128743c0f35, type: 3}
     - target: {fileID: 5533332501760049196, guid: c5ef630e78a658943880f2bad2a078fc, type: 3}
       propertyPath: 'audioSources.Array.data[0]'
       value: 
