@@ -9,11 +9,11 @@ public class AudioManager : MonoBehaviour
     [SerializeField] AudioSource[] instrumentAudio;
 
     public static bool isMusicStarted = false;
-    // Start is called before the first frame update
-    void Start()
-    {
+
+    //void Start()
+    //{
        
-    }
+    //}
 
     public void SetAudioClips(int index)
     {

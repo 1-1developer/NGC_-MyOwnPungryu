@@ -5,21 +5,25 @@ using UnityEngine;
 
 public class AudioButton : MonoBehaviour
 {
-    [SerializeField] RectTransform audioButtonInitialPosition;
+    [SerializeField] RectTransform initialPosition;
+    [SerializeField] RectTransform animPosition;
+
+    private RectTransform rectTransform;
     // Start is called before the first frame update
     void Start()
     {
-        RectTransform currentPosition = GetComponent<RectTransform>();
-        RectTransform destination = currentPosition;
+        rectTransform = GetComponent<RectTransform>();
+        rectTransform.anchoredPosition = initialPosition.anchoredPosition;
 
-        currentPosition = audioButtonInitialPosition;
-
-        //currentPosition.DOAnchorPos(new Vector2(destination.anchoredPosition.x, destination.anchoredPosition.y), 1.0f);
+        ShowButton();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void ShowButton()
     {
-        
+        rectTransform.DOAnchorPos(animPosition.anchoredPosition, 1.0f);
+    }
+    public void HideButton()
+    {
+        rectTransform.DOAnchorPos(initialPosition.anchoredPosition, 1.0f);
     }
 }

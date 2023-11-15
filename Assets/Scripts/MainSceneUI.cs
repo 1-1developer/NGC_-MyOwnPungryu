@@ -15,6 +15,8 @@ public class MainSceneUI : MonoBehaviour
     [SerializeField]
     private GameObject dragInstrumentUI;
     [SerializeField]
+    private GameObject tutorial;
+    [SerializeField]
     private GameObject AudioButtons;
     [SerializeField]
     private List <GameObject> InstrumentButtonPrefab;
@@ -80,6 +82,7 @@ public class MainSceneUI : MonoBehaviour
     {       
         AudioButtons.SetActive(true);
         dragInstrumentUI.SetActive(false);
+        tutorial.SetActive(true);
         OffInstrumentSelection();
         AudioManager.Instance.StopAudioSources();
     }

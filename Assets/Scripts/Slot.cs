@@ -12,28 +12,23 @@ public class Slot : MonoBehaviour
         isEmpty = true;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
     private void OnTriggerEnter2D(Collider2D other)
     {
         Debug.Log("Full Slot");
         if (isEmpty)
         {
             other.transform.DOMove(transform.position, 0.5f);
+            //other.attachedRigidbody.bodyType = RigidbodyType2D.Kinematic;
             isEmpty = false;
         }
     }
-    private void  OnTriggerStay(Collider other)
-    {
 
-        
-    }
     private void OnTriggerExit2D(Collider2D other)
     {
+        //other.attachedRigidbody.bodyType = RigidbodyType2D.Dynamic;
         Debug.Log("Empty Slot");
         isEmpty = true;
     }
+
+    public bool IsEmpty() {  return isEmpty; }
 }

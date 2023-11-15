@@ -11,6 +11,8 @@ public class DragDropButtons : MonoBehaviour, IBeginDragHandler, IDragHandler, I
     private AudioSource audioSource;
     private Rigidbody2D myRigidbody;
 
+    private bool inSlot;
+
 
     //////////////////////// Touch Drag ////////////////////////////
     public void OnBeginDrag(PointerEventData data)
@@ -32,6 +34,8 @@ public class DragDropButtons : MonoBehaviour, IBeginDragHandler, IDragHandler, I
     {
         myRigidbody = GetComponent<Rigidbody2D>();
         audioSource = GetComponent<AudioSource>();
+
+        inSlot = true;
     }
 
     void Update()
@@ -59,14 +63,16 @@ public class DragDropButtons : MonoBehaviour, IBeginDragHandler, IDragHandler, I
                 audioSource.Play();
                 AudioManager.isMusicStarted = true;
             }
+
+            inSlot = false;
         }
 
         //////////////////////////// Mute Music ////////////////////////////
 
-        if (other.gameObject.CompareTag("Off Music Area"))
-        {
+        //if (other.gameObject.CompareTag("Off Music Area"))
+        //{
 
-        }
+        //}
 
         //////////////////////// Positioning to Slot ////////////////////////////
 
@@ -76,8 +82,13 @@ public class DragDropButtons : MonoBehaviour, IBeginDragHandler, IDragHandler, I
             {
                 audioSource.mute = true;
             }
-           
-            
+
+            inSlot = true;
         }
+    }
+
+    public bool IsInSlot()
+    {
+        return inSlot;
     }
 }
