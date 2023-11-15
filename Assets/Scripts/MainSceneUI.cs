@@ -19,19 +19,21 @@ public class MainSceneUI : MonoBehaviour
     [SerializeField]
     private List <GameObject> InstrumentButtonPrefab;
 
-    private List<RectTransform> audioButtonPosition;
+
     private RectTransform InstrumentButtonPosition;
 
 
     private Vector2 initial_shelfLeftTransform;
     private Vector2 initial_shelfrightTransform;
 
+    float instrumentButtonDistance = 300.0f;
+
     public int audioIndex;
 
 
     void Start()
     {
-        // 언어 선택 데이터 받아오기
+        // Language Data Set
         int languageSprite = Title.selectLanguage;
         Debug.Log("Language Mode: "+languageSprite);
 
@@ -39,18 +41,7 @@ public class MainSceneUI : MonoBehaviour
         initial_shelfLeftTransform = shelfLeftTransform.anchoredPosition;
         initial_shelfrightTransform = shelfRIghtTransform.anchoredPosition;
 
-        // Audio Button Position Setting
-        //for(int i = 0; i < 3; i++)
-        //{
-        //    audioButtonPosition.Add(AudioButtons.transform.GetChild(i).GetComponent<RectTransform>());
-        //}
-
-        //audioButtonPosition[0].DOAnchorPos(new Vector2(-350.0f, -350.0f), 1.0f);
-        //audioButtonPosition[1].DOAnchorPos(new Vector2(0, -350.0f), 1.0f);
-        //audioButtonPosition[2].DOAnchorPos(new Vector2(350.0f, -350.0f), 1.0f);
-
-        // Instrument Button Position Setting
-        float instrumentButtonDistance = 300.0f;
+        
         for (int i = 0; i < InstrumentButtonPrefab.Capacity; i++) {
             InstrumentButtonPosition = InstrumentButtonPrefab[i].GetComponent<RectTransform>();
             if(i < 3)
@@ -65,19 +56,15 @@ public class MainSceneUI : MonoBehaviour
 
         dragInstrumentUI.SetActive(false);
     }
-    void Update()
-    {
-        
-    }
 
-    // 홈 버튼 누르면 타이틀로 이동
+    // Home Button
     public void OnClickHomeButton()
     {
         SceneManager.LoadScene("Title");
     }
 
     
-    // 노래 선택 & 선반 활성화
+    // Music Select & Activate Shelf
     public void OnClickAudioSelectButton(int n)
     {
         audioIndex = n;
@@ -88,7 +75,7 @@ public class MainSceneUI : MonoBehaviour
         OnInstrumentSelection();
     }
 
-    // 선반 비활성화
+    // Deactivate Shelf
     public void OnClickCloseButton()
     {       
         AudioButtons.SetActive(true);
@@ -96,7 +83,7 @@ public class MainSceneUI : MonoBehaviour
         OffInstrumentSelection();
         AudioManager.Instance.StopAudioSources();
     }
-    // 악기 선택 UI
+    // Audio Selection UI
     public void OnInstrumentSelection()
     {
         float moveRange = 200.0f;
@@ -124,11 +111,11 @@ public class MainSceneUI : MonoBehaviour
             InstrumentButtonPosition = InstrumentButtonPrefab[i].GetComponent<RectTransform>();
             if (i < 3)
             {
-                InstrumentButtonPosition.DOAnchorPos(new Vector2(initial_shelfLeftTransform.x, -350.0f - i * 300.0f), 1.0f);
+                InstrumentButtonPosition.DOAnchorPos(new Vector2(initial_shelfLeftTransform.x, -350.0f - i * instrumentButtonDistance), 1.0f);
             }
             else
             {
-                InstrumentButtonPosition.DOAnchorPos(new Vector2(initial_shelfrightTransform.x, -350.0f - (i - 3) * 300.0f), 1.0f);
+                InstrumentButtonPosition.DOAnchorPos(new Vector2(initial_shelfrightTransform.x, -350.0f - (i - 3) * instrumentButtonDistance), 1.0f);
             }  
         }
     }

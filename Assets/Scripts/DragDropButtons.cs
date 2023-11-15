@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,9 +12,9 @@ public class DragDropButtons : MonoBehaviour, IBeginDragHandler, IDragHandler, I
     private Rigidbody2D myRigidbody;
 
 
-    //////////////////////// 터치 드래그 ////////////////////////////
+    //////////////////////// Touch Drag ////////////////////////////
     public void OnBeginDrag(PointerEventData data)
-    {       
+    {
         //transform.position = data.position;
         myRigidbody.MovePosition(data.position);
     }
@@ -25,25 +26,28 @@ public class DragDropButtons : MonoBehaviour, IBeginDragHandler, IDragHandler, I
     {
         myRigidbody.MovePosition(data.position);
     }
-    //////////////////////// 터치 드래그 ////////////////////////////
+    //////////////////////// Touch Drag ////////////////////////////
 
     void Start()
     {
         myRigidbody = GetComponent<Rigidbody2D>();
-        audioSource = GetComponent<AudioSource>();        
+        audioSource = GetComponent<AudioSource>();
     }
 
     void Update()
     {
-        if(!audioSource.isPlaying && AudioManager.isMusicStarted ==true)
+        if (!audioSource.isPlaying && AudioManager.isMusicStarted == true)
         {
             audioSource.Play();
             audioSource.mute = true;
         }
     }
-    void OnTriggerEnter2D(Collider2D other)
-    {        
-        if(other.gameObject.CompareTag("Play Music Area")){
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        //////////////////////////// Play Music ////////////////////////////
+
+        if (other.gameObject.CompareTag("Play Music Area"))
+        {
 
             if (audioSource.isPlaying)
             {
@@ -55,16 +59,25 @@ public class DragDropButtons : MonoBehaviour, IBeginDragHandler, IDragHandler, I
                 audioSource.Play();
                 AudioManager.isMusicStarted = true;
             }
-        }    
-        
+        }
+
+        //////////////////////////// Mute Music ////////////////////////////
+
         if (other.gameObject.CompareTag("Off Music Area"))
         {
-            //Debug.Log("Mute Music");
+
+        }
+
+        //////////////////////// Positioning to Slot ////////////////////////////
+
+        if (other.gameObject.CompareTag("Instrument Slot"))
+        {
             if (audioSource.isPlaying)
             {
                 audioSource.mute = true;
             }
+           
+            
         }
     }
-
 }

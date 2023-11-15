@@ -15,12 +15,6 @@ public class AudioManager : MonoBehaviour
        
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     public void SetAudioClips(int index)
     {
         for(int i = 0; i < instrumentAudio.Length; i++)
