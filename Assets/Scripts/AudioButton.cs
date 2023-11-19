@@ -2,6 +2,7 @@ using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class AudioButton : MonoBehaviour
 {
@@ -9,15 +10,29 @@ public class AudioButton : MonoBehaviour
     [SerializeField] RectTransform animPosition;
 
     private RectTransform rectTransform;
+    private bool isSelectable;
     // Start is called before the first frame update
     void Start()
     {
         rectTransform = GetComponent<RectTransform>();
         rectTransform.anchoredPosition = initialPosition.anchoredPosition;
 
+        isSelectable = true;
         ShowButton();
     }
-
+    private void Update()
+    {
+        if (MainSceneUI.Instance.isShelfOn && isSelectable)
+        {
+            HideButton();
+            isSelectable = false;
+        }
+        else if(!MainSceneUI.Instance.isShelfOn && !isSelectable)
+        {
+            ShowButton();
+            isSelectable = true;
+        }
+    }
     public void ShowButton()
     {
         rectTransform.DOAnchorPos(animPosition.anchoredPosition, 1.0f);

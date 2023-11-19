@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 5533332501760049196}
   - component: {fileID: 4287161402201583411}
   - component: {fileID: 2557310366759317030}
+  - component: {fileID: 5865205905744664368}
   m_Layer: 5
   m_Name: Instrument
   m_TagString: Draggable Button
@@ -145,15 +146,15 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3505828068667644101}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
-  m_UseFullKinematicContacts: 1
+  m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 100
   m_AngularDrag: 0.05
   m_GravityScale: 0
-  m_Material: {fileID: 6200000, guid: 2f562dcedbd03fb499421235fac41f89, type: 2}
+  m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -177,6 +178,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioClips: []
+  inSlot: 0
 --- !u!82 &4287161402201583411
 AudioSource:
   m_ObjectHideFlags: 0
@@ -309,6 +311,18 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_Radius: 77.32
+--- !u!225 &5865205905744664368
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3505828068667644101}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &3652086546557152837
 GameObject:
   m_ObjectHideFlags: 0

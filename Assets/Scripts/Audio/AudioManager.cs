@@ -20,7 +20,6 @@ public class AudioManager : MonoBehaviour
         for(int i = 0; i < instrumentAudio.Length; i++)
         {
             instrumentAudio[i].clip = instrumentButtons[i].GetComponent<DragDropButtons>().audioClips[index];
-            Debug.Log("instrument button: " + i + " audio clip: " + index);
         }
     }
 

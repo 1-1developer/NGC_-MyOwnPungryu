@@ -17,20 +17,24 @@ public class MainSceneUI : MonoBehaviour
     [SerializeField]
     private GameObject tutorial;
     [SerializeField]
-    private GameObject AudioButtons;
+    private GameObject AudioButtons;    
+
     [SerializeField]
-    private List <GameObject> InstrumentButtonPrefab;
+    private List<GameObject> instrumentButtons;
+    [SerializeField]
+    private List <RectTransform> instrumentButtonTransform;
 
-
-    private RectTransform InstrumentButtonPosition;
+    [SerializeField]
+    private List<GameObject> slots;
+    [SerializeField]
+    private List<RectTransform> slotTransform;
 
 
     private Vector2 initial_shelfLeftTransform;
     private Vector2 initial_shelfrightTransform;
 
-    float instrumentButtonDistance = 300.0f;
-
-    public int audioIndex;
+    [HideInInspector] public bool isShelfOn;
+    [HideInInspector] public int audioIndex;
 
 
     void Start()
@@ -43,21 +47,19 @@ public class MainSceneUI : MonoBehaviour
         initial_shelfLeftTransform = shelfLeftTransform.anchoredPosition;
         initial_shelfrightTransform = shelfRIghtTransform.anchoredPosition;
 
-        
-        for (int i = 0; i < InstrumentButtonPrefab.Capacity; i++) {
-            InstrumentButtonPosition = InstrumentButtonPrefab[i].GetComponent<RectTransform>();
-            if(i < 3)
-            {
-                InstrumentButtonPosition.anchoredPosition = new Vector2(initial_shelfLeftTransform.x, -350.0f - i * instrumentButtonDistance) ;
-            }
-            else
-            {
-                InstrumentButtonPosition.anchoredPosition = new Vector2(initial_shelfrightTransform.x, -350.0f - (i-3) * instrumentButtonDistance);
-            }
+        for (int i = 0; i < 4; i++) {
+            instrumentButtonTransform[i].anchoredPosition = new Vector2(initial_shelfLeftTransform.x, slotTransform[i].anchoredPosition.y);   
         }
+        for (int i = 3; i < instrumentButtonTransform.Capacity; i++)
+        {
+            instrumentButtonTransform[i].anchoredPosition = new Vector2(initial_shelfrightTransform.x, slotTransform[i].anchoredPosition.y);
+        }
+
+        isShelfOn = false;
 
         dragInstrumentUI.SetActive(false);
     }
+
 
     // Home Button
     public void OnClickHomeButton()
@@ -69,22 +71,25 @@ public class MainSceneUI : MonoBehaviour
     // Music Select & Activate Shelf
     public void OnClickAudioSelectButton(int n)
     {
+        isShelfOn = true;
+
         audioIndex = n;
         AudioManager.Instance.SetAudioClips(audioIndex);
                 
-        AudioButtons.SetActive(false);
         dragInstrumentUI.SetActive(true);
         OnInstrumentSelection();
     }
 
     // Deactivate Shelf
     public void OnClickCloseButton()
-    {       
-        AudioButtons.SetActive(true);
+    {
+        isShelfOn = false;
+
+        AudioManager.Instance.StopAudioSources();
+
         dragInstrumentUI.SetActive(false);
         tutorial.SetActive(true);
         OffInstrumentSelection();
-        AudioManager.Instance.StopAudioSources();
     }
     // Audio Selection UI
     public void OnInstrumentSelection()
@@ -92,16 +97,17 @@ public class MainSceneUI : MonoBehaviour
         float moveRange = 200.0f;
         shelfLeftTransform.DOAnchorPosX(initial_shelfLeftTransform.x + moveRange, 1.0f);
         shelfRIghtTransform.DOAnchorPosX(initial_shelfrightTransform.x - moveRange, 1.0f);
-        for (int i = 0; i < InstrumentButtonPrefab.Capacity; i++)
+        for (int i = 0; i < instrumentButtonTransform.Capacity; i++)
         {
-            InstrumentButtonPosition = InstrumentButtonPrefab[i].GetComponent<RectTransform>();
             if (i < 3)
             {
-                InstrumentButtonPosition.DOAnchorPosX(initial_shelfLeftTransform.x + moveRange, 1.0f);
+                instrumentButtonTransform[i].DOAnchorPosX(initial_shelfLeftTransform.x + moveRange, 1.0f);
+                slotTransform[i].DOAnchorPosX(initial_shelfLeftTransform.x + moveRange, 1.0f);
             }
             else
             {
-                InstrumentButtonPosition.DOAnchorPosX(initial_shelfrightTransform.x - moveRange, 1.0f);
+                instrumentButtonTransform[i].DOAnchorPosX(initial_shelfrightTransform.x - moveRange, 1.0f);
+                slotTransform[i].DOAnchorPosX(initial_shelfrightTransform.x - moveRange, 1.0f);
             }
         }
     }
@@ -109,17 +115,54 @@ public class MainSceneUI : MonoBehaviour
     {
         shelfLeftTransform.DOAnchorPosX(initial_shelfLeftTransform.x, 1.0f);
         shelfRIghtTransform.DOAnchorPosX(initial_shelfrightTransform.x, 1.0f);
-        for (int i = 0; i < InstrumentButtonPrefab.Capacity; i++)
+        for (int i = 0; i < instrumentButtonTransform.Capacity; i++)
         {
-            InstrumentButtonPosition = InstrumentButtonPrefab[i].GetComponent<RectTransform>();
             if (i < 3)
             {
-                InstrumentButtonPosition.DOAnchorPos(new Vector2(initial_shelfLeftTransform.x, -350.0f - i * instrumentButtonDistance), 1.0f);
+                slotTransform[i].DOAnchorPosX(initial_shelfLeftTransform.x, 1.0f);
             }
             else
             {
-                InstrumentButtonPosition.DOAnchorPos(new Vector2(initial_shelfrightTransform.x, -350.0f - (i - 3) * instrumentButtonDistance), 1.0f);
-            }  
+                slotTransform[i].DOAnchorPosX(initial_shelfrightTransform.x, 1.0f);
+            }
+        }
+        //for (int i = 0; i < InstrumentButtonPrefab.Capacity; i++)
+        //{
+        //    if (i < 3)
+        //    {
+        //        instrumentButtonTransform[i].DOAnchorPos(new Vector2(initial_shelfLeftTransform.x, -350.0f - i * instrumentButtonDistance), 1.0f);
+        //    }
+        //    else
+        //    {
+        //        instrumentButtonTransform[i].DOAnchorPos(new Vector2(initial_shelfrightTransform.x, -350.0f - (i - 3) * instrumentButtonDistance), 1.0f);
+        //    }  
+        //}
+        ResetInstrumentButtons();
+    }
+
+    public void ResetInstrumentButtons()
+    {
+        for (int i = 0; i < instrumentButtons.Capacity; i++)
+        {
+            if (!instrumentButtons[i].GetComponent<DragDropButtons>().IsInSlot())
+            {
+                Vector2 minDistanceSlot = slotTransform[0].anchoredPosition;
+                for (int j = 1; j < instrumentButtons.Capacity; j++)
+                {
+                    if (slots[j].GetComponent<Slot>().IsEmpty())
+                    {
+                        if (Vector2.Distance(minDistanceSlot, instrumentButtonTransform[i].anchoredPosition) >
+                        Vector2.Distance(slotTransform[j].anchoredPosition, instrumentButtonTransform[i].anchoredPosition))
+                        {
+                            minDistanceSlot = slotTransform[j].anchoredPosition;
+                        }
+                    }
+
+                }
+
+                instrumentButtonTransform[i].anchoredPosition = minDistanceSlot;
+            }
+
         }
     }
 

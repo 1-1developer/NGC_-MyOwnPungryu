@@ -10,15 +10,18 @@ public class DragDropButtons : MonoBehaviour, IBeginDragHandler, IDragHandler, I
     public AudioClip[] audioClips;
     private AudioSource audioSource;
     private Rigidbody2D myRigidbody;
+    private CanvasGroup canvasGroup;
+    //private CircleCollider2D circleCollider;
+    //[HideInInspector] public RectTransform instrumentButtonRectTransform;
 
-    private bool inSlot;
-
+    public bool inSlot;
 
     //////////////////////// Touch Drag ////////////////////////////
     public void OnBeginDrag(PointerEventData data)
     {
         //transform.position = data.position;
-        myRigidbody.MovePosition(data.position);
+        //myRigidbody.MovePosition(data.position);
+        canvasGroup.blocksRaycasts = false;
     }
     public void OnDrag(PointerEventData data)
     {
@@ -26,7 +29,8 @@ public class DragDropButtons : MonoBehaviour, IBeginDragHandler, IDragHandler, I
     }
     public void OnEndDrag(PointerEventData data)
     {
-        myRigidbody.MovePosition(data.position);
+        //myRigidbody.MovePosition(data.position);
+        canvasGroup.blocksRaycasts = true;
     }
     //////////////////////// Touch Drag ////////////////////////////
 
@@ -34,6 +38,9 @@ public class DragDropButtons : MonoBehaviour, IBeginDragHandler, IDragHandler, I
     {
         myRigidbody = GetComponent<Rigidbody2D>();
         audioSource = GetComponent<AudioSource>();
+        canvasGroup = GetComponent<CanvasGroup>();
+        //circleCollider = GetComponent<CircleCollider2D>();
+        //instrumentButtonRectTransform = GetComponent<RectTransform>();
 
         inSlot = true;
     }
@@ -59,20 +66,12 @@ public class DragDropButtons : MonoBehaviour, IBeginDragHandler, IDragHandler, I
             }
             else
             {
-                Debug.Log("On Music");
                 audioSource.Play();
                 AudioManager.isMusicStarted = true;
             }
 
-            inSlot = false;
+            //inSlot = false;
         }
-
-        //////////////////////////// Mute Music ////////////////////////////
-
-        //if (other.gameObject.CompareTag("Off Music Area"))
-        //{
-
-        //}
 
         //////////////////////// Positioning to Slot ////////////////////////////
 
@@ -84,11 +83,21 @@ public class DragDropButtons : MonoBehaviour, IBeginDragHandler, IDragHandler, I
             }
 
             inSlot = true;
+            //circleCollider.isTrigger = true;
+        }
+    }
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("Instrument Slot"))
+        {
+            inSlot = false;
+            //circleCollider.isTrigger = false;
         }
     }
 
     public bool IsInSlot()
     {
+        Debug.Log("Is in Slot");
         return inSlot;
     }
 }
