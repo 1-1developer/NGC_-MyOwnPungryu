@@ -14,7 +14,6 @@ public class DragDropButtons : MonoBehaviour, IBeginDragHandler, IDragHandler, I
     //[HideInInspector] public RectTransform instrumentButtonRectTransform;
 
     public bool inSlot;
-    public int curSlotIndex;
 
     //////////////////////// Touch Drag ////////////////////////////
     public void OnBeginDrag(PointerEventData data)

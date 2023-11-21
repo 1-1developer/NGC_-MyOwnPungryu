@@ -138,17 +138,6 @@ public class MainSceneUI : MonoBehaviour
         {
             if (i < 3)
             {
-                slotTransform[i].DOAnchorPosX(initial_shelfLeftTransform.x + moveRange, 1.0f);
-            }
-            else
-            {
-                slotTransform[i].DOAnchorPosX(initial_shelfrightTransform.x - moveRange, 1.0f);
-            }
-        }
-        for (int i = 0; i < instrumentButtonTransform.Capacity; i++)
-        {
-            if (i < 3)
-            {
                 slotTransform[i].DOAnchorPosX(initial_shelfLeftTransform.x, 1.0f);
             }
             else
@@ -193,9 +182,28 @@ public class MainSceneUI : MonoBehaviour
                             }
                         }
                         slots[curSlotIndex].GetComponent<Slot>().isEmpty = false;
+                        if(curSlotIndex < 3)
+                        {
+                            minDistanceSlot.x = initial_shelfLeftTransform.x;
+                        }
+                        else
+                        {
+                            minDistanceSlot.x = initial_shelfrightTransform.x;
+                        }
                         instrumentButtonTransform[i].DOAnchorPos(minDistanceSlot, 1.0f);
                         break;
                     }
+                }
+            }
+            else
+            {
+                if (instrumentButtonTransform[i].anchoredPosition.x < 0)
+                {
+                    instrumentButtonTransform[i].DOAnchorPosX(initial_shelfLeftTransform.x, 1.0f);
+                }
+                else
+                {
+                    instrumentButtonTransform[i].DOAnchorPosX(initial_shelfrightTransform.x, 1.0f);
                 }
             }
         }

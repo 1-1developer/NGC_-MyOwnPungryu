@@ -9,11 +9,12 @@ public class AudioManager : MonoBehaviour
     [SerializeField] AudioSource[] instrumentAudio;
 
     public static bool isMusicStarted = false;
+    //private AudioClip[] audioClips;
 
-    //void Start()
-    //{
-       
-    //}
+    void Awake()
+    {
+
+    }
 
     public void SetAudioClips(int index)
     {
