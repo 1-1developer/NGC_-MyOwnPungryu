@@ -11,16 +11,16 @@ public class DragDropButtons : MonoBehaviour, IBeginDragHandler, IDragHandler, I
     private AudioSource audioSource;
     private Rigidbody2D myRigidbody;
     private CanvasGroup canvasGroup;
-    //private CircleCollider2D circleCollider;
     //[HideInInspector] public RectTransform instrumentButtonRectTransform;
 
     public bool inSlot;
+    public int curSlotIndex;
 
     //////////////////////// Touch Drag ////////////////////////////
     public void OnBeginDrag(PointerEventData data)
     {
         //transform.position = data.position;
-        //myRigidbody.MovePosition(data.position);
+        gameObject.transform.SetAsLastSibling();
         canvasGroup.blocksRaycasts = false;
     }
     public void OnDrag(PointerEventData data)
@@ -29,7 +29,6 @@ public class DragDropButtons : MonoBehaviour, IBeginDragHandler, IDragHandler, I
     }
     public void OnEndDrag(PointerEventData data)
     {
-        //myRigidbody.MovePosition(data.position);
         canvasGroup.blocksRaycasts = true;
     }
     //////////////////////// Touch Drag ////////////////////////////
@@ -39,7 +38,6 @@ public class DragDropButtons : MonoBehaviour, IBeginDragHandler, IDragHandler, I
         myRigidbody = GetComponent<Rigidbody2D>();
         audioSource = GetComponent<AudioSource>();
         canvasGroup = GetComponent<CanvasGroup>();
-        //circleCollider = GetComponent<CircleCollider2D>();
         //instrumentButtonRectTransform = GetComponent<RectTransform>();
 
         inSlot = true;
@@ -70,7 +68,7 @@ public class DragDropButtons : MonoBehaviour, IBeginDragHandler, IDragHandler, I
                 AudioManager.isMusicStarted = true;
             }
 
-            //inSlot = false;
+            inSlot = false;
         }
 
         //////////////////////// Positioning to Slot ////////////////////////////
@@ -83,17 +81,15 @@ public class DragDropButtons : MonoBehaviour, IBeginDragHandler, IDragHandler, I
             }
 
             inSlot = true;
-            //circleCollider.isTrigger = true;
         }
     }
-    private void OnTriggerExit2D(Collider2D other)
-    {
-        if (other.gameObject.CompareTag("Instrument Slot"))
-        {
-            inSlot = false;
-            //circleCollider.isTrigger = false;
-        }
-    }
+    //private void OnTriggerExit2D(Collider2D other)
+    //{
+    //    if (other.gameObject.CompareTag("Instrument Slot"))
+    //    {
+    //        inSlot = false;
+    //    }
+    //}
 
     public bool IsInSlot()
     {

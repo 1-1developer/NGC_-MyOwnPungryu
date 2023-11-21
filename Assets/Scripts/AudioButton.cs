@@ -11,7 +11,7 @@ public class AudioButton : MonoBehaviour
 
     private RectTransform rectTransform;
     private bool isSelectable;
-    // Start is called before the first frame update
+
     void Start()
     {
         rectTransform = GetComponent<RectTransform>();

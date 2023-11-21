@@ -625,6 +625,10 @@ PrefabInstance:
       propertyPath: m_PlayOnAwake
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4393626357329031309, guid: c5ef630e78a658943880f2bad2a078fc, type: 3}
+      propertyPath: m_text
+      value: Instrument4
+      objectReference: {fileID: 0}
     - target: {fileID: 5533332501760049196, guid: c5ef630e78a658943880f2bad2a078fc, type: 3}
       propertyPath: audioClips.Array.size
       value: 3
@@ -651,11 +655,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5549014422263875821, guid: c5ef630e78a658943880f2bad2a078fc, type: 3}
       propertyPath: m_BodyType
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5549014422263875821, guid: c5ef630e78a658943880f2bad2a078fc, type: 3}
       propertyPath: m_UseFullKinematicContacts
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7810431739445066132, guid: c5ef630e78a658943880f2bad2a078fc, type: 3}
       propertyPath: Loop
@@ -727,7 +731,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9015332963202372688, guid: c5ef630e78a658943880f2bad2a078fc, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -147
+      value: -50
       objectReference: {fileID: 0}
     - target: {fileID: 9015332963202372688, guid: c5ef630e78a658943880f2bad2a078fc, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -961,6 +965,10 @@ PrefabInstance:
       propertyPath: m_PlayOnAwake
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4393626357329031309, guid: c5ef630e78a658943880f2bad2a078fc, type: 3}
+      propertyPath: m_text
+      value: Instrument5
+      objectReference: {fileID: 0}
     - target: {fileID: 5533332501760049196, guid: c5ef630e78a658943880f2bad2a078fc, type: 3}
       propertyPath: audioClips.Array.size
       value: 3
@@ -987,11 +995,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5549014422263875821, guid: c5ef630e78a658943880f2bad2a078fc, type: 3}
       propertyPath: m_BodyType
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5549014422263875821, guid: c5ef630e78a658943880f2bad2a078fc, type: 3}
       propertyPath: m_UseFullKinematicContacts
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7810431739445066132, guid: c5ef630e78a658943880f2bad2a078fc, type: 3}
       propertyPath: Loop
@@ -1063,7 +1071,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9015332963202372688, guid: c5ef630e78a658943880f2bad2a078fc, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -387
+      value: -300
       objectReference: {fileID: 0}
     - target: {fileID: 9015332963202372688, guid: c5ef630e78a658943880f2bad2a078fc, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1755,7 +1763,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1469787895422089875, guid: 7d1a3a949f455114fb09b9d39daaa475, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -384
+      value: -300
       objectReference: {fileID: 0}
     - target: {fileID: 1469787895422089875, guid: 7d1a3a949f455114fb09b9d39daaa475, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1843,10 +1851,6 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
-    - target: {fileID: 2557310366759317030, guid: c5ef630e78a658943880f2bad2a078fc, type: 3}
-      propertyPath: m_Radius
-      value: 78.98
-      objectReference: {fileID: 0}
     - target: {fileID: 3505828068667644101, guid: c5ef630e78a658943880f2bad2a078fc, type: 3}
       propertyPath: m_Name
       value: Instrument
@@ -1858,6 +1862,10 @@ PrefabInstance:
     - target: {fileID: 4287161402201583411, guid: c5ef630e78a658943880f2bad2a078fc, type: 3}
       propertyPath: m_PlayOnAwake
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4393626357329031309, guid: c5ef630e78a658943880f2bad2a078fc, type: 3}
+      propertyPath: m_text
+      value: Instrument0
       objectReference: {fileID: 0}
     - target: {fileID: 5533332501760049196, guid: c5ef630e78a658943880f2bad2a078fc, type: 3}
       propertyPath: audioClips.Array.size
@@ -1953,7 +1961,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9015332963202372688, guid: c5ef630e78a658943880f2bad2a078fc, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 119.359985
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 9015332963202372688, guid: c5ef630e78a658943880f2bad2a078fc, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -2011,6 +2019,10 @@ PrefabInstance:
     - target: {fileID: 4287161402201583411, guid: c5ef630e78a658943880f2bad2a078fc, type: 3}
       propertyPath: m_PlayOnAwake
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4393626357329031309, guid: c5ef630e78a658943880f2bad2a078fc, type: 3}
+      propertyPath: m_text
+      value: Instrument2
       objectReference: {fileID: 0}
     - target: {fileID: 5533332501760049196, guid: c5ef630e78a658943880f2bad2a078fc, type: 3}
       propertyPath: audioClips.Array.size
@@ -2102,7 +2114,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9015332963202372688, guid: c5ef630e78a658943880f2bad2a078fc, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -387
+      value: -300
       objectReference: {fileID: 0}
     - target: {fileID: 9015332963202372688, guid: c5ef630e78a658943880f2bad2a078fc, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -2715,7 +2727,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1469787895422089875, guid: 7d1a3a949f455114fb09b9d39daaa475, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -391.00006
+      value: -300
       objectReference: {fileID: 0}
     - target: {fileID: 1469787895422089875, guid: 7d1a3a949f455114fb09b9d39daaa475, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -3556,6 +3568,10 @@ PrefabInstance:
       propertyPath: m_PlayOnAwake
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4393626357329031309, guid: c5ef630e78a658943880f2bad2a078fc, type: 3}
+      propertyPath: m_text
+      value: Instrument1
+      objectReference: {fileID: 0}
     - target: {fileID: 5533332501760049196, guid: c5ef630e78a658943880f2bad2a078fc, type: 3}
       propertyPath: audioClips.Array.size
       value: 3
@@ -3642,7 +3658,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9015332963202372688, guid: c5ef630e78a658943880f2bad2a078fc, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -130
+      value: -50
       objectReference: {fileID: 0}
     - target: {fileID: 9015332963202372688, guid: c5ef630e78a658943880f2bad2a078fc, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -3757,7 +3773,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1469787895422089875, guid: 7d1a3a949f455114fb09b9d39daaa475, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -137.00006
+      value: -50
       objectReference: {fileID: 0}
     - target: {fileID: 1469787895422089875, guid: 7d1a3a949f455114fb09b9d39daaa475, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -4307,6 +4323,10 @@ PrefabInstance:
       propertyPath: m_PlayOnAwake
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4393626357329031309, guid: c5ef630e78a658943880f2bad2a078fc, type: 3}
+      propertyPath: m_text
+      value: Instrument3
+      objectReference: {fileID: 0}
     - target: {fileID: 5533332501760049196, guid: c5ef630e78a658943880f2bad2a078fc, type: 3}
       propertyPath: audioClips.Array.size
       value: 3
@@ -4333,11 +4353,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5549014422263875821, guid: c5ef630e78a658943880f2bad2a078fc, type: 3}
       propertyPath: m_BodyType
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5549014422263875821, guid: c5ef630e78a658943880f2bad2a078fc, type: 3}
       propertyPath: m_UseFullKinematicContacts
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7810431739445066132, guid: c5ef630e78a658943880f2bad2a078fc, type: 3}
       propertyPath: Loop
@@ -4409,7 +4429,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9015332963202372688, guid: c5ef630e78a658943880f2bad2a078fc, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 120
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 9015332963202372688, guid: c5ef630e78a658943880f2bad2a078fc, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -4529,7 +4549,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1469787895422089875, guid: 7d1a3a949f455114fb09b9d39daaa475, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 118
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 1469787895422089875, guid: 7d1a3a949f455114fb09b9d39daaa475, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -4694,7 +4714,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1469787895422089875, guid: 7d1a3a949f455114fb09b9d39daaa475, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -130
+      value: -50
       objectReference: {fileID: 0}
     - target: {fileID: 1469787895422089875, guid: 7d1a3a949f455114fb09b9d39daaa475, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -4862,7 +4882,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1469787895422089875, guid: 7d1a3a949f455114fb09b9d39daaa475, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 125
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 1469787895422089875, guid: 7d1a3a949f455114fb09b9d39daaa475, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -4903,6 +4923,10 @@ PrefabInstance:
     - target: {fileID: 5607246552293075196, guid: 7d1a3a949f455114fb09b9d39daaa475, type: 3}
       propertyPath: m_Name
       value: Slot_Instrument
+      objectReference: {fileID: 0}
+    - target: {fileID: 7994748965875902567, guid: 7d1a3a949f455114fb09b9d39daaa475, type: 3}
+      propertyPath: m_Radius
+      value: 110
       objectReference: {fileID: 0}
     - target: {fileID: 7994748965875902567, guid: 7d1a3a949f455114fb09b9d39daaa475, type: 3}
       propertyPath: m_IsTrigger
