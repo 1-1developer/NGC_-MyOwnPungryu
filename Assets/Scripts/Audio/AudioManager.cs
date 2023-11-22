@@ -5,22 +5,36 @@ using UnityEngine;
 
 public class AudioManager : MonoBehaviour
 {
-    [SerializeField] GameObject[] instrumentButtons;
     [SerializeField] AudioSource[] instrumentAudio;
+    [SerializeField] AudioClip[] audioClips1;
+    [SerializeField] AudioClip[] audioClips2;
+    [SerializeField] AudioClip[] audioClips3;
 
     public static bool isMusicStarted = false;
-    //private AudioClip[] audioClips;
-
-    void Awake()
-    {
-
-    }
 
     public void SetAudioClips(int index)
     {
-        for(int i = 0; i < instrumentAudio.Length; i++)
+
+        if(index == 0)
         {
-            instrumentAudio[i].clip = instrumentButtons[i].GetComponent<DragDropButtons>().audioClips[index];
+            for (int i = 0; i < instrumentAudio.Length; i++)
+            {
+                instrumentAudio[i].clip = audioClips1[i];
+            }
+        }
+        if (index == 1)
+        {
+            for (int i = 0; i < instrumentAudio.Length; i++)
+            {
+                instrumentAudio[i].clip = audioClips2[i];
+            }
+        }
+        if (index == 2)
+        {
+            for (int i = 0; i < instrumentAudio.Length; i++)
+            {
+                instrumentAudio[i].clip = audioClips3[i];
+            }
         }
     }
 

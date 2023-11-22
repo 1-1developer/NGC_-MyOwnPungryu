@@ -48,20 +48,6 @@ public class MainSceneUI : MonoBehaviour
         initial_shelfLeftTransform = shelfLeftTransform.anchoredPosition;
         initial_shelfrightTransform = shelfRIghtTransform.anchoredPosition;
 
-        for (int i = 0; i < 4; i++) {
-            instrumentButtonTransform[i].anchoredPosition = new Vector2(initial_shelfLeftTransform.x, slotTransform[i].anchoredPosition.y);
-        }
-        for (int i = 3; i < instrumentButtonTransform.Capacity; i++)
-        {
-            instrumentButtonTransform[i].anchoredPosition = new Vector2(initial_shelfrightTransform.x, slotTransform[i].anchoredPosition.y);
-        }
-        for (int i = 3; i < instrumentButtonTransform.Capacity; i++)
-        {
-            instrumentButtonTransform[i].anchoredPosition = new Vector2(initial_shelfrightTransform.x, slotTransform[i].anchoredPosition.y);
-        }
-
-
-
         isShelfOn = false;
 
         dragInstrumentUI.SetActive(false);
@@ -73,7 +59,6 @@ public class MainSceneUI : MonoBehaviour
     {
         SceneManager.LoadScene("Title");
     }
-
     
     // Music Select & Activate Shelf
     public void OnClickAudioSelectButton(int n)
@@ -98,8 +83,8 @@ public class MainSceneUI : MonoBehaviour
         tutorial.SetActive(true);
         OffInstrumentSelection();
     }
-    // Audio Selection UI
 
+    // Audio Selection UI
     float moveRange = 200.0f;
     public void OnInstrumentSelection()
     {
@@ -116,15 +101,6 @@ public class MainSceneUI : MonoBehaviour
             else
             {
                 slotTransform[i].DOAnchorPosX(initial_shelfrightTransform.x - moveRange, 1.0f);
-            }
-
-            if (instrumentButtonTransform[i].anchoredPosition.x < 0)
-            {
-                instrumentButtonTransform[i].DOAnchorPosX(initial_shelfLeftTransform.x + moveRange, 1.0f);
-            }
-            else
-            {
-                instrumentButtonTransform[i].DOAnchorPosX(initial_shelfrightTransform.x - moveRange, 1.0f);
             }
         }
     }
@@ -144,17 +120,7 @@ public class MainSceneUI : MonoBehaviour
             {
                 slotTransform[i].DOAnchorPosX(initial_shelfrightTransform.x, 1.0f);
             }
-            //if (instrumentButtonTransform[i].anchoredPosition.x < 0)
-            //{
-            //    instrumentButtonTransform[i].DOAnchorPosX(initial_shelfLeftTransform.x , 1.0f);
-            //}
-            //else
-            //{
-            //    instrumentButtonTransform[i].DOAnchorPosX(initial_shelfrightTransform.x , 1.0f);
-            //}
         }
-
-
     }
 
     public void ResetInstrumentButtons()
@@ -165,13 +131,13 @@ public class MainSceneUI : MonoBehaviour
             {
                 for (int k = 0; k < slots.Capacity; k++)
                 {
-                    if (slots[k].GetComponent<Slot>().IsEmpty())
+                    if (slots[k].transform.childCount == 0)
                     {
                         Vector2 minDistanceSlot = slotTransform[k].anchoredPosition;
                         int curSlotIndex = k;
                         for (int j = k + 1; j < instrumentButtons.Capacity; j++)
                         {
-                            if (slots[j].GetComponent<Slot>().IsEmpty())
+                            if (slots[j].transform.childCount == 0)
                             {
                                 if (Vector2.Distance(minDistanceSlot, instrumentButtonTransform[i].anchoredPosition) >
                                 Vector2.Distance(slotTransform[j].anchoredPosition, instrumentButtonTransform[i].anchoredPosition))
@@ -181,29 +147,11 @@ public class MainSceneUI : MonoBehaviour
                                 }
                             }
                         }
-                        slots[curSlotIndex].GetComponent<Slot>().isEmpty = false;
-                        if(curSlotIndex < 3)
-                        {
-                            minDistanceSlot.x = initial_shelfLeftTransform.x;
-                        }
-                        else
-                        {
-                            minDistanceSlot.x = initial_shelfrightTransform.x;
-                        }
-                        instrumentButtonTransform[i].DOAnchorPos(minDistanceSlot, 1.0f);
+                        //slots[curSlotIndex].GetComponent<Slot>().isEmpty = false;
+                        instrumentButtons[i].transform.SetParent(slots[curSlotIndex].transform);
+                        instrumentButtonTransform[i].DOAnchorPos(new Vector2(0, 0), 1.0f);
                         break;
                     }
-                }
-            }
-            else
-            {
-                if (instrumentButtonTransform[i].anchoredPosition.x < 0)
-                {
-                    instrumentButtonTransform[i].DOAnchorPosX(initial_shelfLeftTransform.x, 1.0f);
-                }
-                else
-                {
-                    instrumentButtonTransform[i].DOAnchorPosX(initial_shelfrightTransform.x, 1.0f);
                 }
             }
         }

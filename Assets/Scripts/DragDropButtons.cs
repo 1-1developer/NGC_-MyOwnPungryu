@@ -1,43 +1,25 @@
 using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
 public class DragDropButtons : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
-
-    public AudioClip[] audioClips;
     private AudioSource audioSource;
     private Rigidbody2D myRigidbody;
     private CanvasGroup canvasGroup;
-    //[HideInInspector] public RectTransform instrumentButtonRectTransform;
+    private Canvas rootCanvas;
 
     public bool inSlot;
 
-    //////////////////////// Touch Drag ////////////////////////////
-    public void OnBeginDrag(PointerEventData data)
-    {
-        //transform.position = data.position;
-        gameObject.transform.SetAsLastSibling();
-        canvasGroup.blocksRaycasts = false;
-    }
-    public void OnDrag(PointerEventData data)
-    {
-        myRigidbody.MovePosition(data.position);
-    }
-    public void OnEndDrag(PointerEventData data)
-    {
-        canvasGroup.blocksRaycasts = true;
-    }
-    //////////////////////// Touch Drag ////////////////////////////
-
-    void Start()
+    void Awake()
     {
         myRigidbody = GetComponent<Rigidbody2D>();
         audioSource = GetComponent<AudioSource>();
         canvasGroup = GetComponent<CanvasGroup>();
-        //instrumentButtonRectTransform = GetComponent<RectTransform>();
+        this.rootCanvas = this.GetComponentInParent<Canvas>();
 
         inSlot = true;
     }
@@ -50,6 +32,37 @@ public class DragDropButtons : MonoBehaviour, IBeginDragHandler, IDragHandler, I
             audioSource.mute = true;
         }
     }
+
+    /////////////////////////// Touch Drag ///////////////////////////////
+    public void OnBeginDrag(PointerEventData data)
+    {
+        //transform.position = data.position;
+
+        // set parent to root canvas
+        this.transform.SetParent(rootCanvas.transform);
+
+        // if clicked set as last sibling
+        gameObject.transform.SetAsLastSibling();
+
+
+        canvasGroup.blocksRaycasts = false;
+    }
+    public void OnDrag(PointerEventData data)
+    {
+        myRigidbody.MovePosition(data.position);
+    }
+    public void OnEndDrag(PointerEventData data)
+    {
+        canvasGroup.blocksRaycasts = true;
+    }
+
+    public void ReturnToParent()
+    {
+        this.transform.SetParent(this.rootCanvas.transform);
+    }
+
+    /////////////////////////// Touch Drag ///////////////////////////////
+    
     private void OnTriggerEnter2D(Collider2D other)
     {
         //////////////////////////// Play Music ////////////////////////////
@@ -77,16 +90,15 @@ public class DragDropButtons : MonoBehaviour, IBeginDragHandler, IDragHandler, I
             if (audioSource.isPlaying)
             {
                 audioSource.mute = true;
-            }
-
-            inSlot = true;
+            }         
         }
     }
+
     //private void OnTriggerExit2D(Collider2D other)
     //{
     //    if (other.gameObject.CompareTag("Instrument Slot"))
     //    {
-    //        inSlot = false;
+    //        inSlot = false;            
     //    }
     //}
 
