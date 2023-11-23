@@ -6,14 +6,12 @@ using UnityEngine.EventSystems;
 
 public class Slot : MonoBehaviour, IDropHandler
 {
-    //public bool isEmpty;
 
     private RectTransform slotRectTransform;
 
 
     void Awake()
     {
-        //isEmpty = false;
         slotRectTransform = GetComponent<RectTransform>();
     }
 
@@ -27,12 +25,13 @@ public class Slot : MonoBehaviour, IDropHandler
             data.pointerDrag.GetComponent<RectTransform>().anchoredPosition = slotRectTransform.localPosition;
             data.pointerDrag.transform.SetParent(this.transform);
             dragDropButton.inSlot = true;
-            //isEmpty = false;
         }
         else
         {
             dragDropButton.ReturnToParent();
+            dragDropButton.inSlot = false;
         }
+
         //if(data.pointerDrag != null)
         //{
         //    //data.pointerDrag.transform.DOMove(slotRectTransform.anchoredPosition, 1.0f);
@@ -42,11 +41,4 @@ public class Slot : MonoBehaviour, IDropHandler
         //    //data.pointerDrag.transform.SetParent(this.transform);
         //}
     }
-
-    private void OnTriggerExit2D(Collider2D other)
-    {
-        //isEmpty = true;
-    }
-
-    //public bool IsEmpty() { return isEmpty; }
 }

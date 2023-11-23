@@ -15,9 +15,7 @@ public class MainSceneUI : MonoBehaviour
     [SerializeField]
     private GameObject dragInstrumentUI;
     [SerializeField]
-    private GameObject tutorial;
-    [SerializeField]
-    private GameObject AudioButtons;    
+    private GameObject tutorial;   
 
     [SerializeField]
     private List<GameObject> instrumentButtons;
@@ -28,8 +26,6 @@ public class MainSceneUI : MonoBehaviour
     private List<GameObject> slots;
     [SerializeField]
     private List<RectTransform> slotTransform;
-
-
 
     private Vector2 initial_shelfLeftTransform;
     private Vector2 initial_shelfrightTransform;
@@ -127,7 +123,8 @@ public class MainSceneUI : MonoBehaviour
     {
         for (int i = 0; i < instrumentButtons.Capacity; i++)
         {
-            if (!instrumentButtons[i].GetComponent<DragDropButtons>().IsInSlot())
+            DragDropButtons curDragDropButton = instrumentButtons[i].GetComponent<DragDropButtons>();
+            if (!curDragDropButton.IsInSlot())
             {
                 for (int k = 0; k < slots.Capacity; k++)
                 {
@@ -147,8 +144,8 @@ public class MainSceneUI : MonoBehaviour
                                 }
                             }
                         }
-                        //slots[curSlotIndex].GetComponent<Slot>().isEmpty = false;
                         instrumentButtons[i].transform.SetParent(slots[curSlotIndex].transform);
+                        curDragDropButton.inSlot = true;
                         instrumentButtonTransform[i].DOAnchorPos(new Vector2(0, 0), 1.0f);
                         break;
                     }

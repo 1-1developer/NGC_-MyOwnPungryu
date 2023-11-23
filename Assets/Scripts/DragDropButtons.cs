@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UIElements;
 
 public class DragDropButtons : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
@@ -11,15 +12,20 @@ public class DragDropButtons : MonoBehaviour, IBeginDragHandler, IDragHandler, I
     private Rigidbody2D myRigidbody;
     private CanvasGroup canvasGroup;
     private Canvas rootCanvas;
+    private RectTransform myPosition;
 
     public bool inSlot;
 
+    [HideInInspector] public Vector2 returnPosition;
     void Awake()
     {
         myRigidbody = GetComponent<Rigidbody2D>();
         audioSource = GetComponent<AudioSource>();
         canvasGroup = GetComponent<CanvasGroup>();
         this.rootCanvas = this.GetComponentInParent<Canvas>();
+        myPosition = GetComponentInParent<RectTransform>();
+
+
 
         inSlot = true;
     }
@@ -40,6 +46,7 @@ public class DragDropButtons : MonoBehaviour, IBeginDragHandler, IDragHandler, I
 
         // set parent to root canvas
         this.transform.SetParent(rootCanvas.transform);
+        returnPosition = myPosition.anchoredPosition;
 
         // if clicked set as last sibling
         gameObject.transform.SetAsLastSibling();
@@ -49,7 +56,9 @@ public class DragDropButtons : MonoBehaviour, IBeginDragHandler, IDragHandler, I
     }
     public void OnDrag(PointerEventData data)
     {
-        myRigidbody.MovePosition(data.position);
+        float clampPositionX = Mathf.Clamp(data.position.x, 30.0f, 1230.0f);
+        float clampPositionY = Mathf.Clamp(data.position.y, 0.0f, 550.0f);
+        myRigidbody.MovePosition(new Vector2(clampPositionX, clampPositionY));
     }
     public void OnEndDrag(PointerEventData data)
     {
@@ -59,6 +68,10 @@ public class DragDropButtons : MonoBehaviour, IBeginDragHandler, IDragHandler, I
     public void ReturnToParent()
     {
         this.transform.SetParent(this.rootCanvas.transform);
+    }
+    public void ReturnPosition()
+    {
+        myPosition.anchoredPosition = returnPosition;
     }
 
     /////////////////////////// Touch Drag ///////////////////////////////
@@ -82,29 +95,22 @@ public class DragDropButtons : MonoBehaviour, IBeginDragHandler, IDragHandler, I
 
             inSlot = false;
         }
+    }
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        //////////////////////////// Mute Music ////////////////////////////
 
-        //////////////////////// Positioning to Slot ////////////////////////////
-
-        if (other.gameObject.CompareTag("Instrument Slot"))
+        if (other.gameObject.CompareTag("Play Music Area"))
         {
             if (audioSource.isPlaying)
             {
                 audioSource.mute = true;
-            }         
+            }
         }
     }
 
-    //private void OnTriggerExit2D(Collider2D other)
-    //{
-    //    if (other.gameObject.CompareTag("Instrument Slot"))
-    //    {
-    //        inSlot = false;            
-    //    }
-    //}
-
     public bool IsInSlot()
     {
-        Debug.Log("Is in Slot");
         return inSlot;
     }
 }
