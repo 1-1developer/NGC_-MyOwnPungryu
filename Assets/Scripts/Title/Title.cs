@@ -1,11 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 using UnityEngine.SceneManagement;
 
 public class Title : MonoBehaviour
 {
     public static int selectLanguage;
+
+    
     public void OnClickStartKorean()
     {
         selectLanguage = 0;

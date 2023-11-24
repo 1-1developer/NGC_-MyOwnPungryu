@@ -56,8 +56,8 @@ public class DragDropButtons : MonoBehaviour, IBeginDragHandler, IDragHandler, I
     }
     public void OnDrag(PointerEventData data)
     {
-        float clampPositionX = Mathf.Clamp(data.position.x, 30.0f, 1230.0f);
-        float clampPositionY = Mathf.Clamp(data.position.y, 0.0f, 550.0f);
+        float clampPositionX = Mathf.Clamp(data.position.x, 30.0f, 1630.0f);
+        float clampPositionY = Mathf.Clamp(data.position.y, 0.0f, 750.0f);
         myRigidbody.MovePosition(new Vector2(clampPositionX, clampPositionY));
     }
     public void OnEndDrag(PointerEventData data)
