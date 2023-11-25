@@ -71,8 +71,19 @@ public class DragDropButtons : MonoBehaviour, IBeginDragHandler, IDragHandler, I
     }
     public void ReturnPosition()
     {
+        
+        //if (inSlot)
+        //{
+        //    myPosition.DOAnchorPos(new Vector2(0, 0), 0.4f);
+        //}
+        //else
+        //{
+        //    myPosition.DOAnchorPos(returnPosition, 0.4f);
+        //}
         myPosition.anchoredPosition = returnPosition;
+        //myPosition.DOAnchorPos(returnPosition, 0.5f);
         transform.SetParent(parentAfterDrag);
+
     }
     /////////////////////////// Touch Drag ///////////////////////////////
     

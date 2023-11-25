@@ -21,15 +21,15 @@ public class Slot : MonoBehaviour, IDropHandler
 
         if(this.transform.childCount == 0)
         {
-           
-            data.pointerDrag.GetComponent<RectTransform>().anchoredPosition = slotRectTransform.localPosition;
+
+            //data.pointerDrag.GetComponent<RectTransform>().anchoredPosition = slotRectTransform.localPosition;
+            data.pointerDrag.GetComponent<RectTransform>().DOAnchorPos(new Vector2(0,0), 0.3f);
             data.pointerDrag.transform.SetParent(this.transform);
             dragDropButton.inSlot = true;
         }
         else
         {
             dragDropButton.ReturnPosition();
-            dragDropButton.inSlot = false;
         }
     }
 }
