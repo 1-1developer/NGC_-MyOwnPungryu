@@ -17,6 +17,8 @@ public class DragDropButtons : MonoBehaviour, IBeginDragHandler, IDragHandler, I
     public bool inSlot;
 
     [HideInInspector] public Vector2 returnPosition;
+    [HideInInspector] public Transform parentAfterDrag;
+
     void Awake()
     {
         myRigidbody = GetComponent<Rigidbody2D>();
@@ -24,8 +26,6 @@ public class DragDropButtons : MonoBehaviour, IBeginDragHandler, IDragHandler, I
         canvasGroup = GetComponent<CanvasGroup>();
         this.rootCanvas = this.GetComponentInParent<Canvas>();
         myPosition = GetComponentInParent<RectTransform>();
-
-
 
         inSlot = true;
     }
@@ -38,13 +38,13 @@ public class DragDropButtons : MonoBehaviour, IBeginDragHandler, IDragHandler, I
             audioSource.mute = true;
         }
     }
-
     /////////////////////////// Touch Drag ///////////////////////////////
     public void OnBeginDrag(PointerEventData data)
     {
-        //transform.position = data.position;
+        // transform.position = data.position;
 
         // set parent to root canvas
+        parentAfterDrag = transform.parent;
         this.transform.SetParent(rootCanvas.transform);
         returnPosition = myPosition.anchoredPosition;
 
@@ -72,8 +72,8 @@ public class DragDropButtons : MonoBehaviour, IBeginDragHandler, IDragHandler, I
     public void ReturnPosition()
     {
         myPosition.anchoredPosition = returnPosition;
+        transform.SetParent(parentAfterDrag);
     }
-
     /////////////////////////// Touch Drag ///////////////////////////////
     
     private void OnTriggerEnter2D(Collider2D other)
@@ -96,6 +96,7 @@ public class DragDropButtons : MonoBehaviour, IBeginDragHandler, IDragHandler, I
             inSlot = false;
         }
     }
+
     private void OnTriggerExit2D(Collider2D other)
     {
         //////////////////////////// Mute Music ////////////////////////////

@@ -28,17 +28,8 @@ public class Slot : MonoBehaviour, IDropHandler
         }
         else
         {
-            dragDropButton.ReturnToParent();
+            dragDropButton.ReturnPosition();
             dragDropButton.inSlot = false;
         }
-
-        //if(data.pointerDrag != null)
-        //{
-        //    //data.pointerDrag.transform.DOMove(slotRectTransform.anchoredPosition, 1.0f);
-            
-        //    data.pointerDrag.GetComponent<RectTransform>().anchoredPosition = slotRectTransform.anchoredPosition;
-        //    isEmpty = false;
-        //    //data.pointerDrag.transform.SetParent(this.transform);
-        //}
     }
 }
