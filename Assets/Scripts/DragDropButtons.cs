@@ -13,8 +13,12 @@ public class DragDropButtons : MonoBehaviour, IBeginDragHandler, IDragHandler, I
     private CanvasGroup canvasGroup;
     private Canvas rootCanvas;
     private RectTransform myPosition;
+    private ParticleSystem myparticle;
+    private UnityEngine.UI.Slider mySlider;
+    private Animator slider_anim;
 
     public bool inSlot;
+    private float timer;
 
     [HideInInspector] public Vector2 returnPosition;
     [HideInInspector] public Transform parentAfterDrag;
@@ -26,8 +30,12 @@ public class DragDropButtons : MonoBehaviour, IBeginDragHandler, IDragHandler, I
         canvasGroup = GetComponent<CanvasGroup>();
         this.rootCanvas = this.GetComponentInParent<Canvas>();
         myPosition = GetComponentInParent<RectTransform>();
-
+        myparticle = GetComponentInChildren<ParticleSystem>();
+        mySlider = GetComponentInChildren<UnityEngine.UI.Slider>();
         inSlot = true;
+        myparticle.Stop();
+        mySlider.gameObject.SetActive(false);
+        slider_anim = mySlider.GetComponent<Animator>();
     }
 
     void Update()
@@ -37,6 +45,31 @@ public class DragDropButtons : MonoBehaviour, IBeginDragHandler, IDragHandler, I
             audioSource.Play();
             audioSource.mute = true;
         }
+        if (inSlot)
+        {
+            myparticle.Stop(); myparticle.Clear();
+        }
+        if (mySlider.IsActive())
+        {
+            timer += Time.deltaTime;
+            audioSource.volume = mySlider.value;
+            if (timer > 2.6f)
+                slider_anim.SetTrigger("Out");
+            if (timer > 3f)
+            {
+                mySlider.gameObject.SetActive(false);
+                timer = 0;
+            }
+            if (timer <= 0)
+            {
+                timer = 0;
+            }
+        }
+    }
+
+    public void addTime()
+    {
+        timer-=0.1f;
     }
     /////////////////////////// Touch Drag ///////////////////////////////
     public void OnBeginDrag(PointerEventData data)
@@ -51,18 +84,31 @@ public class DragDropButtons : MonoBehaviour, IBeginDragHandler, IDragHandler, I
         // if clicked set as last sibling
         gameObject.transform.SetAsLastSibling();
 
-
         canvasGroup.blocksRaycasts = false;
+        mySlider.gameObject.SetActive(true);
     }
     public void OnDrag(PointerEventData data)
     {
-        float clampPositionX = Mathf.Clamp(data.position.x, 30.0f, 1630.0f);
-        float clampPositionY = Mathf.Clamp(data.position.y, 0.0f, 750.0f);
-        myRigidbody.MovePosition(new Vector2(clampPositionX, clampPositionY));
+        //float distance = Vector3.Distance(myPosition.position, data.position);
+        //float maxDistance = 80f;
+        //if(distance > maxDistance * rootCanvas.scaleFactor)
+        //{
+        //    myRigidbody.MovePosition(data.position.normalized*(maxDistance* rootCanvas.scaleFactor));
+        //}
+        //else
+        //{
+        //}
+        //float clampPositionX = Mathf.Clamp(data.position.x, 30.0f, 1480);
+        //float clampPositionY = Mathf.Clamp(data.position.y, 0.0f, 10000f);
+        //myRigidbody.MovePosition(new Vector2(clampPositionX, clampPositionY));
+
+        //myRigidbody.MovePosition(new Vector2(data.position.x, data.position.y));
+        myPosition.anchoredPosition += data.delta/data.clickCount;
     }
     public void OnEndDrag(PointerEventData data)
     {
         canvasGroup.blocksRaycasts = true;
+
     }
 
     public void ReturnToParent()
@@ -70,8 +116,7 @@ public class DragDropButtons : MonoBehaviour, IBeginDragHandler, IDragHandler, I
         this.transform.SetParent(this.rootCanvas.transform);
     }
     public void ReturnPosition()
-    {
-        
+    {      
         //if (inSlot)
         //{
         //    myPosition.DOAnchorPos(new Vector2(0, 0), 0.4f);
@@ -97,6 +142,7 @@ public class DragDropButtons : MonoBehaviour, IBeginDragHandler, IDragHandler, I
             if (audioSource.isPlaying)
             {
                 audioSource.mute = false;
+                myparticle.Play();
             }
             else
             {
@@ -117,6 +163,7 @@ public class DragDropButtons : MonoBehaviour, IBeginDragHandler, IDragHandler, I
             if (audioSource.isPlaying)
             {
                 audioSource.mute = true;
+                myparticle.Stop(); myparticle.Clear();
             }
         }
     }

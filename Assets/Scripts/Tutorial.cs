@@ -14,11 +14,10 @@ public class Tutorial : MonoBehaviour
     {
         image = GetComponent<Image>();
         image.DOFade(1.1f, 0.8f).SetEase(Ease.InOutSine).SetLoops(-1, LoopType.Yoyo);
-        touchIcon.GetComponent<RectTransform>().DOAnchorPos(touchIconAnimPosition, 2.0f).SetEase(Ease.InOutSine).SetLoops(-1, LoopType.Yoyo);
+        touchIcon.GetComponent<RectTransform>().DOAnchorPos(touchIconAnimPosition, 2.0f).SetEase(Ease.InOutSine).SetLoops(-1, LoopType.Restart);
     }
     private void OnTriggerEnter2D(Collider2D collision)
     { 
         gameObject.SetActive(false);
     }
-
 }

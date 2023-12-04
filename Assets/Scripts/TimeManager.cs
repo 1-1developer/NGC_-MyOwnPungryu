@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class TimeManager : MonoBehaviour
 {
     float timer = 0;
-    float MaxTime = 100f;
+    float MaxTime = 330f;
 
     bool isStart = false;
 
@@ -30,5 +30,4 @@ public class TimeManager : MonoBehaviour
             SceneManager.LoadScene("Title");
         }
     }
-
 }

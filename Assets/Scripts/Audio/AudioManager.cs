@@ -14,7 +14,6 @@ public class AudioManager : MonoBehaviour
 
     public void SetAudioClips(int index)
     {
-
         if(index == 0)
         {
             for (int i = 0; i < instrumentAudio.Length; i++)

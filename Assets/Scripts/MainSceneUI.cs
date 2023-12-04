@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using DG.Tweening;
 using Unity.VisualScripting;
 using UnityEngine.TestTools;
+using TMPro;
 
 public class MainSceneUI : MonoBehaviour
 {
@@ -33,11 +35,17 @@ public class MainSceneUI : MonoBehaviour
     [HideInInspector] public bool isShelfOn;
     [HideInInspector] public int audioIndex;
 
+    [SerializeField] Image piri;
+    [SerializeField] Image cursong;
+    [SerializeField] Sprite[] piris;
+    [SerializeField] Sprite[] songs;
+    [SerializeField] TextMeshProUGUI piri_Tx;
+
 
     void Start()
     {
         // Language Data Set
-        int languageSprite = Title.selectLanguage;
+        int languageSprite = LanguageID.selectLanguage;
         Debug.Log("Language Mode: "+languageSprite);
 
         // Shelf Initial Position Setting
@@ -47,6 +55,7 @@ public class MainSceneUI : MonoBehaviour
         isShelfOn = false;
 
         dragInstrumentUI.SetActive(false);
+        cursong.color = Color.clear;
     }
 
 
@@ -63,9 +72,37 @@ public class MainSceneUI : MonoBehaviour
 
         audioIndex = n;
         AudioManager.Instance.SetAudioClips(audioIndex);
-                
+        
         dragInstrumentUI.SetActive(true);
         OnInstrumentSelection();
+        cursong.color = Color.white;
+
+
+        if (audioIndex ==0 ) //ch
+        {
+            piri.sprite = piris[1];
+            if (LanguageID.selectLanguage == 0)
+                cursong.sprite = songs[0];
+            else
+                cursong.sprite = songs[3];
+        }
+        else if(audioIndex == 1)//y
+        {
+            piri.sprite = piris[1];
+            if (LanguageID.selectLanguage == 0)
+                cursong.sprite = songs[1];
+            else
+                cursong.sprite = songs[4];
+        }
+        else if (audioIndex == 2)//t
+        {
+            piri.sprite = piris[0];
+            if (LanguageID.selectLanguage == 0)
+                cursong.sprite = songs[2];
+            else
+                cursong.sprite = songs[5];
+        }
+
     }
 
     // Deactivate Shelf
@@ -121,6 +158,7 @@ public class MainSceneUI : MonoBehaviour
 
     public void ResetInstrumentButtons()
     {
+        cursong.color = Color.clear;
         for (int i = 0; i < instrumentButtons.Capacity; i++)
         {
             DragDropButtons curDragDropButton = instrumentButtons[i].GetComponent<DragDropButtons>();

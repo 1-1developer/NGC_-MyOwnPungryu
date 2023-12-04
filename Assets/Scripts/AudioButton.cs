@@ -11,12 +11,12 @@ public class AudioButton : MonoBehaviour
 
     private RectTransform rectTransform;
     private bool isSelectable;
+    [SerializeField] GameObject selecttext;
 
     void Start()
     {
         rectTransform = GetComponent<RectTransform>();
         rectTransform.anchoredPosition = initialPosition.anchoredPosition;
-
         isSelectable = true;
         ShowButton();
     }
@@ -36,9 +36,11 @@ public class AudioButton : MonoBehaviour
     public void ShowButton()
     {
         rectTransform.DOAnchorPos(animPosition.anchoredPosition, 1.0f);
+        selecttext.SetActive(true);
     }
     public void HideButton()
     {
         rectTransform.DOAnchorPos(initialPosition.anchoredPosition, 1.0f);
+        selecttext.SetActive(false);
     }
 }
