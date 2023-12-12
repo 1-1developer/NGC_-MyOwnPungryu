@@ -41,7 +41,6 @@ public class MainSceneUI : MonoBehaviour
     [SerializeField] Sprite[] songs;
     [SerializeField] TextMeshProUGUI piri_Tx;
 
-
     void Start()
     {
         // Language Data Set
@@ -58,10 +57,10 @@ public class MainSceneUI : MonoBehaviour
         cursong.color = Color.clear;
     }
 
-
     // Home Button
     public void OnClickHomeButton()
     {
+        AudioManager.PlayDefaultButtonSound();
         SceneManager.LoadScene("Title");
     }
     
@@ -77,6 +76,7 @@ public class MainSceneUI : MonoBehaviour
         OnInstrumentSelection();
         cursong.color = Color.white;
 
+        AudioManager.PlayDefaultButtonSound();
 
         if (audioIndex ==0 ) //ch
         {
@@ -102,7 +102,6 @@ public class MainSceneUI : MonoBehaviour
             else
                 cursong.sprite = songs[5];
         }
-
     }
 
     // Deactivate Shelf
@@ -111,6 +110,7 @@ public class MainSceneUI : MonoBehaviour
         isShelfOn = false;
 
         AudioManager.Instance.StopAudioSources();
+        AudioManager.PlayDefaultButtonSound();
 
         dragInstrumentUI.SetActive(false);
         tutorial.SetActive(true);
@@ -121,7 +121,6 @@ public class MainSceneUI : MonoBehaviour
     float moveRange = 200.0f;
     public void OnInstrumentSelection()
     {
-
         shelfLeftTransform.DOAnchorPosX(initial_shelfLeftTransform.x + moveRange, 1.0f);
         shelfRIghtTransform.DOAnchorPosX(initial_shelfrightTransform.x - moveRange, 1.0f);
 

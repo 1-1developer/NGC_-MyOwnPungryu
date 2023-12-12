@@ -66,7 +66,12 @@ public class DragDropButtons : MonoBehaviour, IBeginDragHandler, IDragHandler, I
             }
         }
     }
-
+    public void autoInit()
+    {
+        audioSource.Play();
+        audioSource.mute = true;
+        audioSource.mute = false;
+    }
     public void addTime()
     {
         timer-=0.1f;
@@ -103,12 +108,15 @@ public class DragDropButtons : MonoBehaviour, IBeginDragHandler, IDragHandler, I
         //myRigidbody.MovePosition(new Vector2(clampPositionX, clampPositionY));
 
         //myRigidbody.MovePosition(new Vector2(data.position.x, data.position.y));
-        myPosition.anchoredPosition += data.delta/data.clickCount;
+        float clampPositionX = Mathf.Clamp((myPosition.anchoredPosition + data.delta / data.clickCount).x, -550f, 520);
+        float clampPositionY = Mathf.Clamp((myPosition.anchoredPosition + data.delta / data.clickCount).y, -350f, 230);
+
+        // myPosition.anchoredPosition += data.delta/data.clickCount;
+        myPosition.anchoredPosition = new Vector2(clampPositionX, clampPositionY);
     }
     public void OnEndDrag(PointerEventData data)
     {
         canvasGroup.blocksRaycasts = true;
-
     }
 
     public void ReturnToParent()
@@ -128,7 +136,6 @@ public class DragDropButtons : MonoBehaviour, IBeginDragHandler, IDragHandler, I
         myPosition.anchoredPosition = returnPosition;
         //myPosition.DOAnchorPos(returnPosition, 0.5f);
         transform.SetParent(parentAfterDrag);
-
     }
     /////////////////////////// Touch Drag ///////////////////////////////
     
@@ -138,18 +145,17 @@ public class DragDropButtons : MonoBehaviour, IBeginDragHandler, IDragHandler, I
 
         if (other.gameObject.CompareTag("Play Music Area"))
         {
+            myparticle.Play();
 
             if (audioSource.isPlaying)
             {
                 audioSource.mute = false;
-                myparticle.Play();
             }
             else
             {
                 audioSource.Play();
                 AudioManager.isMusicStarted = true;
             }
-
             inSlot = false;
         }
     }

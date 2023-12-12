@@ -149,6 +149,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   initialPosition: {fileID: 0}
   animPosition: {fileID: 0}
+  selecttext: {fileID: 0}
 --- !u!1 &2757043702334212088
 GameObject:
   m_ObjectHideFlags: 0

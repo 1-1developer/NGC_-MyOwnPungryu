@@ -12,6 +12,11 @@ public class AudioManager : MonoBehaviour
 
     public static bool isMusicStarted = false;
 
+
+    [Header("UI Sounds")]
+    [Tooltip("General button click.")]
+    [SerializeField] AudioClip m_DefaultButtonSound;
+
     public void SetAudioClips(int index)
     {
         if(index == 0)
@@ -44,7 +49,34 @@ public class AudioManager : MonoBehaviour
             instrumentAudio[i].Stop();
         }
     }
+    public static void PlayDefaultButtonSound()
+    {
+        AudioManager audioManager = FindFirstObjectByType<AudioManager>();
+        if (audioManager == null)
+            return;
 
+        PlayOneSFX(audioManager.m_DefaultButtonSound, Vector3.zero);
+    }
+
+    public static void PlayOneSFX(AudioClip clip, Vector3 sfxPosition)
+    {
+        if (clip == null)
+            return;
+
+        GameObject sfxInstance = GameObject.Find(clip.name);
+        if (sfxInstance != null)
+            return;
+        sfxInstance = new GameObject(clip.name);
+        sfxInstance.transform.position = sfxPosition;
+
+        AudioSource source = sfxInstance.AddComponent<AudioSource>();
+        source.volume = .3f;
+        source.clip = clip;
+        source.Play();
+
+        // destroy after clip length
+        Destroy(sfxInstance, clip.length);
+    }
     // Singleton
     private static AudioManager _Instance;
     public static AudioManager Instance
