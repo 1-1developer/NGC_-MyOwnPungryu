@@ -47,9 +47,4 @@ public class Moon : MonoBehaviour
         //    s.GetComponent<Material>().DOFade(0,.3f).SetLoops(-1, LoopType.Yoyo);
         //}
     }
-
-    void fade(float endValue, float duration, TweenCallback onEnd)
-    {
-
-    }
 }

@@ -40,6 +40,7 @@ public class MainSceneUI : MonoBehaviour
     [SerializeField] Sprite[] piris;
     [SerializeField] Sprite[] songs;
     [SerializeField] TextMeshProUGUI piri_Tx;
+    [SerializeField] CanvasGroup starts;
 
     void Start()
     {
@@ -55,6 +56,7 @@ public class MainSceneUI : MonoBehaviour
 
         dragInstrumentUI.SetActive(false);
         cursong.color = Color.clear;
+        starts.DOFade(1, 2f);
     }
 
     // Home Button
@@ -121,6 +123,7 @@ public class MainSceneUI : MonoBehaviour
     float moveRange = 200.0f;
     public void OnInstrumentSelection()
     {
+        //선반열림
         shelfLeftTransform.DOAnchorPosX(initial_shelfLeftTransform.x + moveRange, 1.0f);
         shelfRIghtTransform.DOAnchorPosX(initial_shelfrightTransform.x - moveRange, 1.0f);
 
@@ -138,7 +141,8 @@ public class MainSceneUI : MonoBehaviour
     }
     public void OffInstrumentSelection()
     {
-        ResetInstrumentButtons();
+        ResetInstrumentButtons(); //악기버튼 제자리
+        //선반닫힘
         shelfLeftTransform.DOAnchorPosX(initial_shelfLeftTransform.x, 1.0f);
         shelfRIghtTransform.DOAnchorPosX(initial_shelfrightTransform.x, 1.0f);
 
@@ -155,7 +159,7 @@ public class MainSceneUI : MonoBehaviour
         }
     }
 
-    public void ResetInstrumentButtons()
+    public void ResetInstrumentButtons() //악기버튼 제자리
     {
         cursong.color = Color.clear;
         for (int i = 0; i < instrumentButtons.Capacity; i++)

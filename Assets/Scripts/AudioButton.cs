@@ -6,10 +6,10 @@ using UnityEngine.SceneManagement;
 
 public class AudioButton : MonoBehaviour
 {
-    [SerializeField] RectTransform initialPosition;
-    [SerializeField] RectTransform animPosition;
+    [SerializeField] RectTransform initialPosition; //초기 위치값
+    [SerializeField] RectTransform animPosition; //모션적용시 위치값
 
-    private RectTransform rectTransform;
+    private RectTransform rectTransform; //자기자신
     private bool isSelectable;
     [SerializeField] GameObject selecttext;
 

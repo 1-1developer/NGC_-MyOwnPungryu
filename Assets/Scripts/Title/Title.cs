@@ -20,26 +20,27 @@ public class Title : MonoBehaviour
     //public Slider loadingSlider;
     public TextMeshProUGUI loadingText;
 
-    public void OnClickStartKorean()
+    public void OnClickStartKorean() //언어모드 - 한국어
     {
-        TitleOut();
+        TitleOut(); //트랜지션 재생
         LanguageID.selectLanguage = 0;
         AudioManager.PlayDefaultButtonSound();
         StartCoroutine("StartMain");
     }
-    public void OnClickStartEnglish()
+    public void OnClickStartEnglish()//언어모드 - 영어
     {
-        TitleOut();
+        TitleOut();//트랜지션 재생
         LanguageID.selectLanguage = 1;
         AudioManager.PlayDefaultButtonSound();
         StartCoroutine(StartMain());
     }
     private void Start()
     {
-        DOTween.Init();
+        DOTween.Init();//닷트윈 초기화
         loadingText.GetComponent<CanvasGroup>().DOFade(0, .001f);
 
-        for (int i = 0; i < rectTransforms.Length; i++)
+        //UI요소 위치 초기화
+        for (int i = 0; i < rectTransforms.Length; i++) 
         {
             //originPos[i].anchoredPosition = rectTransforms[i].anchoredPosition;
             rectTransforms[i].anchoredPosition = animPositions[i].anchoredPosition;
@@ -50,7 +51,7 @@ public class Title : MonoBehaviour
         }
     }
 
-    void TitleOut()
+    void TitleOut()//타이틀 아웃 트랜지션 
     {
         for (int i = 0; i < rectTransforms.Length; i++)
         {
@@ -63,7 +64,7 @@ public class Title : MonoBehaviour
         rectTransforms[0].GetComponent<CanvasGroup>().DOFade(0.06f, 1.0f);
     }
 
-    IEnumerator StartMain()
+    IEnumerator StartMain()//로딩기능
     {
         if (LanguageID.selectLanguage == 0)
         {

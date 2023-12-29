@@ -45,11 +45,11 @@ public class DragDropButtons : MonoBehaviour, IBeginDragHandler, IDragHandler, I
             audioSource.Play();
             audioSource.mute = true;
         }
-        if (inSlot)
+        if (inSlot) //슬롯에 있을때 이펙트 정지 
         {
             myparticle.Stop(); myparticle.Clear();
         }
-        if (mySlider.IsActive())
+        if (mySlider.IsActive()) //볼륨슬라이더 조절
         {
             timer += Time.deltaTime;
             audioSource.volume = mySlider.value;
@@ -94,6 +94,7 @@ public class DragDropButtons : MonoBehaviour, IBeginDragHandler, IDragHandler, I
     }
     public void OnDrag(PointerEventData data)
     {
+        /*
         //float distance = Vector3.Distance(myPosition.position, data.position);
         //float maxDistance = 80f;
         //if(distance > maxDistance * rootCanvas.scaleFactor)
@@ -108,15 +109,17 @@ public class DragDropButtons : MonoBehaviour, IBeginDragHandler, IDragHandler, I
         //myRigidbody.MovePosition(new Vector2(clampPositionX, clampPositionY));
 
         //myRigidbody.MovePosition(new Vector2(data.position.x, data.position.y));
-        float clampPositionX = Mathf.Clamp((myPosition.anchoredPosition + data.delta / data.clickCount).x, -550f, 520);
-        float clampPositionY = Mathf.Clamp((myPosition.anchoredPosition + data.delta / data.clickCount).y, -350f, 230);
+        */
 
-        // myPosition.anchoredPosition += data.delta/data.clickCount;
+        //드래그 포지션 제한
+        float clampPositionX = Mathf.Clamp((myPosition.anchoredPosition + data.delta / data.clickCount).x, -700f, 700);
+        float clampPositionY = Mathf.Clamp((myPosition.anchoredPosition + data.delta / data.clickCount).y, -400f, 300);
+
         myPosition.anchoredPosition = new Vector2(clampPositionX, clampPositionY);
     }
     public void OnEndDrag(PointerEventData data)
     {
-        canvasGroup.blocksRaycasts = true;
+        canvasGroup.blocksRaycasts = true; //드래그-가능 상대로 전환
     }
 
     public void ReturnToParent()
