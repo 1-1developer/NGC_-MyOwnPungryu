@@ -83,7 +83,6 @@ public class Title : MonoBehaviour
 
         while (!asyncLoad.isDone)
         {
-
             //// 로딩 진행 상황에 따라 UI 갱신 (로딩 바 사용)
             //if (loadingSlider != null)
             //    loadingSlider.value = Mathf.Clamp01(asyncLoad.progress / 0.9f);

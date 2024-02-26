@@ -31,7 +31,6 @@ public class Moon : MonoBehaviour
         x = Mathf.Cos(timer);
         y = Mathf.Sin(timer);
         loopMoon();
-
     }
 
     void loopMoon()
